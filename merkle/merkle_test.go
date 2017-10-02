@@ -40,3 +40,33 @@ func TestLeavesReturnsCorrectly(t *testing.T) {
 		}
 	}
 }
+
+func TestMarshalUnmarshal(t *testing.T) {
+	testFrag := [][]byte{
+		[]byte("abc"),
+		[]byte("def"),
+		[]byte("ghi"),
+		[]byte("jkl"),
+		[]byte("mno"),
+	}
+
+	tree := NewTreeFrom(testFrag)
+	b, err := Marshal(tree)
+	if err != nil {
+		t.Fatalf("marshaling failed: %s", err)
+	}
+	tree2, err := Unmarshal(b)
+	if err != nil {
+		t.Fatalf("unmarshaling failed: %s", err)
+	}
+
+	size1, size2 := tree.Size(), tree2.Size()
+	if size1 != size2 {
+		t.Fatalf("size not matching, %d-%d", size1, size2)
+	}
+	for i := uint64(0); i < size1; i++ {
+		if !((tree.nodes[i] == nil && tree2.nodes[i] == nil) || bytes.Equal(tree.nodes[i], tree2.nodes[i])) {
+			t.Fatalf("node not matching: %v -- %v", tree.nodes[i], tree2.nodes[i])
+		}
+	}
+}

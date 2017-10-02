@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package cn.zumium.fyer.util;
+option go_package = "util";
+
+message MerkleItem {
+    enum Type {
+        EMPTY = 0;
+        DATA = 1;
+    }
+    Type type = 1;
+    bytes data = 2;
+}
+
+message MerklePack {
+    uint64 size = 1;
+    repeated MerkleItem items = 2;
+}

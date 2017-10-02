@@ -5,6 +5,8 @@ import (
 	"hash"
 	"math"
 
+	pb_merkle "github.com/Zumium/fyer/protos/util"
+	"github.com/golang/protobuf/proto"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -70,6 +72,55 @@ func NewTreeFrom(d [][]byte) *MTree {
 	}
 
 	return mtree //TO BE REMOVED, REMEMBER!
+}
+
+//Marshal serialize merkle tree to bytes
+func Marshal(tree *MTree) ([]byte, error) {
+	merklePack := &pb_merkle.MerklePack{
+		Size:  tree.Size(),
+		Items: make([]*pb_merkle.MerkleItem, 0, tree.Size()),
+	}
+	for _, item := range tree.nodes {
+		if item == nil {
+			merklePack.Items = append(merklePack.Items, &pb_merkle.MerkleItem{
+				Type: pb_merkle.MerkleItem_EMPTY,
+			})
+		} else {
+			merklePack.Items = append(merklePack.Items, &pb_merkle.MerkleItem{
+				Type: pb_merkle.MerkleItem_DATA,
+				Data: item,
+			})
+		}
+	}
+	b, err := proto.Marshal(merklePack)
+	if err != nil {
+		return nil, err
+	}
+	return b, nil
+}
+
+//Unmarshal deserialize bytes to merkle tree
+func Unmarshal(b []byte) (*MTree, error) {
+	merklePack := &pb_merkle.MerklePack{}
+	if err := proto.Unmarshal(b, merklePack); err != nil {
+		return nil, err
+	}
+	mtree := &MTree{
+		nodes:  make([][]byte, merklePack.GetSize()),
+		hasher: sha3.New256(),
+	}
+
+	items := merklePack.GetItems()
+	for i := uint64(0); i < merklePack.GetSize(); i++ {
+		switch items[i].GetType() {
+		case pb_merkle.MerkleItem_DATA:
+			mtree.nodes[i] = items[i].GetData()
+		case pb_merkle.MerkleItem_EMPTY:
+			mtree.nodes[i] = nil
+		}
+	}
+
+	return mtree, nil
 }
 
 //Size returns the size of the merkle tree
