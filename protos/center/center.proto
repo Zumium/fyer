@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package cn.zumium.fyer.center;
+option go_package = "center";
+
+message RegisterRequest {
+    string name = 1;
+    uint64 size = 2;
+    bytes hash = 3;
+    uint64 frag_count = 4;
+    bytes merkle_tree= 5;
+}
+
+message RegisterResponse {
+    enum Status {
+        FAILED = 0;
+        OK = 1;
+    }
+    Status status = 1;
+    string msg = 2;
+}
+
+message RegisterPeerRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message RegisterPeerResponse {
+    enum Status {
+        FAILED = 0;
+        OK = 1;
+    }
+    Status status = 1;
+    string msg = 2;
+    string login_id = 3;
+}
+
+message FileInfoRequest {
+    string name = 1;
+}
+
+message FileInfoResponse {
+    enum Status {
+        NOT_FOUND = 0;
+        FOUND = 1;
+        ERROR = 2;
+    }
+    Status status = 1;
+    string msg = 2;
+
+    uint64 size = 3;
+    bytes hash = 4;
+    uint64 frag_count = 5;
+    bytes merkle_tree = 6;
+}
+
+message PeerInfoRequest {
+    string login_id = 1;
+}
+
+message PeerInfoResponse {
+    enum Status {
+        NOT_FOUND = 0;
+        ONLINE = 1;
+    }
+    Status status = 1;
+    string msg = 2;
+
+    string username = 3;
+    string address = 4;
+}
+
+service FyerCenter {
+    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc RegisterPeer (RegisterPeerRequest) returns (RegisterPeerResponse);
+    rpc FileInfo (FileInfoRequest) returns (FileInfoResponse);
+    rpc PeerInfo (PeerInfoRequest) returns (PeerInfoResponse);
+}
