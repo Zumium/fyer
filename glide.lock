@@ -1,0 +1,22 @@
+hash: 6353e31a35c3ebdbd8534821dd33cbb57901166aeeecec7fe74ed3910463c9f5
+updated: 2017-10-02T19:33:55.976726+08:00
+imports:
+- name: github.com/golang/protobuf
+  version: 130e6b02ab059e7b717a096f397c5b60111cae74
+  subpackages:
+  - proto
+- name: github.com/xtaci/kcp-go
+  version: 44c3d76a6b5cc9e3687f829078a52f372928e776
+- name: golang.org/x/crypto
+  version: 9419663f5a44be8b34ca85f08abc5fe1be11f8a3
+  subpackages:
+  - sha3
+- name: golang.org/x/net
+  version: 0a9397675ba34b2845f758fe3cd68828369c6517
+  subpackages:
+  - context
+- name: google.golang.org/grpc
+  version: f92cdcd7dcdc69e81b2d7b338479a19a8723cfa3
+- name: gopkg.in/mgo.v2
+  version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
+testImports: []

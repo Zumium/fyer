@@ -1,0 +1,13 @@
+package: .
+import:
+- package: github.com/xtaci/kcp-go
+  version: ^3.19.0
+- package: google.golang.org/grpc
+  version: ^1.6.0
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: golang.org/x/crypto
+  subpackages:
+  - sha3
+- package: gopkg.in/mgo.v2
