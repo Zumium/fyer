@@ -45,7 +45,8 @@ message FragInfoResponse {
     enum Status {
         NOT_FOUND = 0;
         OK = 1;
-        ERROR = 2;
+        NOT_READY = 2;
+        ERROR = 3;
     }
     Status status = 1;
     string msg = 2;
