@@ -1,10 +1,18 @@
-hash: 6353e31a35c3ebdbd8534821dd33cbb57901166aeeecec7fe74ed3910463c9f5
-updated: 2017-10-02T19:33:55.976726+08:00
+hash: 133a778e9df3dd72af81b7c14df7af82e3751d42340e55d1c28a42b87fcfcd79
+updated: 2017-10-14T19:43:31.93605+08:00
 imports:
 - name: github.com/golang/protobuf
   version: 130e6b02ab059e7b717a096f397c5b60111cae74
   subpackages:
   - proto
+  - ptypes
+  - ptypes/any
+  - ptypes/duration
+  - ptypes/timestamp
+- name: github.com/syndtr/goleveldb
+  version: b89cc31ef7977104127d34c1bd31ebd1a9db2199
+  subpackages:
+  - leveldb
 - name: github.com/xtaci/kcp-go
   version: 44c3d76a6b5cc9e3687f829078a52f372928e776
 - name: golang.org/x/crypto
@@ -12,11 +20,45 @@ imports:
   subpackages:
   - sha3
 - name: golang.org/x/net
-  version: 0a9397675ba34b2845f758fe3cd68828369c6517
+  version: a04bdaca5b32abe1c069418fb7088ae607de5bd0
   subpackages:
   - context
+  - http2
+  - http2/hpack
+  - idna
+  - internal/timeseries
+  - lex/httplex
+  - trace
+- name: golang.org/x/text
+  version: c01e4764d870b77f8abe5096ee19ad20d80e8075
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+- name: google.golang.org/genproto
+  version: f676e0f3ac6395ff1a529ae59a6670878a8371a6
+  subpackages:
+  - googleapis/rpc/status
 - name: google.golang.org/grpc
-  version: f92cdcd7dcdc69e81b2d7b338479a19a8723cfa3
+  version: f7bf885db0b7479a537ec317c6e48ce53145f3db
+  subpackages:
+  - balancer
+  - codes
+  - connectivity
+  - credentials
+  - grpclb/grpc_lb_v1/messages
+  - grpclog
+  - internal
+  - keepalive
+  - metadata
+  - naming
+  - peer
+  - resolver
+  - stats
+  - status
+  - tap
+  - transport
 - name: gopkg.in/mgo.v2
   version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
 testImports: []

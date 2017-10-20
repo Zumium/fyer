@@ -11,3 +11,6 @@ import:
   subpackages:
   - sha3
 - package: gopkg.in/mgo.v2
+- package: github.com/syndtr/goleveldb
+  subpackages:
+  - leveldb
