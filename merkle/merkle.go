@@ -144,7 +144,7 @@ func (t *MTree) CopyGet(idx uint64) []byte {
 		return nil
 	}
 	src := t.nodes[idx]
-	rtn := make([]byte, 0, len(src))
+	rtn := make([]byte, len(src))
 	copy(rtn, src)
 	return rtn
 }
