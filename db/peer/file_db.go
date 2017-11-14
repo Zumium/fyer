@@ -28,7 +28,7 @@ type FilesDBWrapper struct {
 
 //NewFilesDBWrapper creates a lightweight db wrapper to simplify db operations
 func NewFilesDBWrapper(name string) *FilesDBWrapper {
-	return &FilesDBWrapper{Name: name, db: nil} //TODO: INJECT DATABASE OBJECT
+	return &FilesDBWrapper{Name: name, db: instance()}
 }
 
 //Has returns true if the file record exists
@@ -114,15 +114,11 @@ func (fw *FilesDBWrapper) StoredFrags() (*StoredFrags, error) {
 	return sf, nil
 }
 
-//Edit opens an underlying transaction to allow modidying the database record
+//Edit opens an underlying transaction to allow modifying the database record
 func (fw *FilesDBWrapper) Edit() *FilesDBEditor {
-	tx, err := fw.db.OpenTransaction()
-	if err != nil {
-		panic(err)
-	}
 	return &FilesDBEditor{
 		wrapper: fw,
-		tx:      tx,
+		batch:   new(leveldb.Batch),
 	}
 }
 
@@ -157,7 +153,7 @@ func (fw *FilesDBWrapper) key(keyname string) []byte {
 //FilesDBEditor is a helper to modifying database record
 type FilesDBEditor struct {
 	wrapper *FilesDBWrapper
-	tx      *leveldb.Transaction
+	batch   *leveldb.Batch
 
 	err error
 }
@@ -165,16 +161,10 @@ type FilesDBEditor struct {
 //Done shall be called when setting operations are done
 func (editor *FilesDBEditor) Done() error {
 	if editor.err != nil {
-		editor.tx.Discard()
 		return editor.err
 	}
-
-	if err := editor.tx.Put(editor.wrapper.key(""), []byte{1}, nil); err != nil {
-		editor.tx.Discard()
-		return err
-	}
-
-	return editor.tx.Commit()
+	editor.batch.Put(editor.wrapper.key(""), []byte{1})
+	return editor.wrapper.db.Write(editor.batch, nil)
 }
 
 //SetSize stores file size
@@ -187,9 +177,7 @@ func (editor *FilesDBEditor) SetSize(size uint64) *FilesDBEditor {
 	if n := binary.PutUvarint(val, size); n <= 0 {
 		panic("internal error: failed to write uint64 to []byte")
 	}
-	if err := editor.tx.Put(editor.wrapper.key("size"), val, nil); err != nil {
-		editor.err = err
-	}
+	editor.batch.Put(editor.wrapper.key("size"), val)
 	return editor
 }
 
@@ -199,9 +187,7 @@ func (editor *FilesDBEditor) SetHash(hash []byte) *FilesDBEditor {
 		return editor
 	}
 
-	if err := editor.tx.Put(editor.wrapper.key("hash"), hash, nil); err != nil {
-		editor.err = err
-	}
+	editor.batch.Put(editor.wrapper.key("hash"), hash)
 	return editor
 }
 
@@ -215,9 +201,7 @@ func (editor *FilesDBEditor) SetFragCount(fragCount uint64) *FilesDBEditor {
 	if n := binary.PutUvarint(val, fragCount); n <= 0 {
 		panic("internal error: failed to write uint64 to []byte")
 	}
-	if err := editor.tx.Put(editor.wrapper.key("frag_count"), val, nil); err != nil {
-		editor.err = err
-	}
+	editor.batch.Put(editor.wrapper.key("frag_count"), val)
 	return editor
 }
 
@@ -232,9 +216,7 @@ func (editor *FilesDBEditor) SetUploadTime(uploadTime time.Time) *FilesDBEditor 
 		editor.err = err
 		return editor
 	}
-	if err := editor.tx.Put(editor.wrapper.key("upload_time"), val, nil); err != nil {
-		editor.err = err
-	}
+	editor.batch.Put(editor.wrapper.key("upload_time"), val)
 	return editor
 }
 
@@ -249,9 +231,7 @@ func (editor *FilesDBEditor) SetMerkleTree(mtree *merkle.MTree) *FilesDBEditor {
 		editor.err = err
 		return editor
 	}
-	if err := editor.tx.Put(editor.wrapper.key("merkle_tree"), val, nil); err != nil {
-		editor.err = err
-	}
+	editor.batch.Put(editor.wrapper.key("merkle_tree"), val)
 	return editor
 }
 
@@ -266,16 +246,14 @@ func (editor *FilesDBEditor) SetStoredFrags(sf *StoredFrags) *FilesDBEditor {
 		editor.err = err
 		return editor
 	}
-	if err := editor.tx.Put(editor.wrapper.key("stored_frags"), val, nil); err != nil {
-		editor.err = err
-	}
+	editor.batch.Put(editor.wrapper.key("stored_frags"), val)
 	return editor
 }
 
 //===============================================================
 
 //NewFileRecord creates a new file database record
-func NewFileRecord(name string, size uint64, hash []byte, fragCount uint64, uploadTime time.Time, mtree *merkle.MTree, storedFrags []uint64) (*FilesDBWrapper, error) {
+func NewFileRecord(name string, size uint64, hash []byte, fragCount uint64, uploadTime time.Time, mtree *merkle.MTree, storedFrags *StoredFrags) (*FilesDBWrapper, error) {
 	nfdw := NewFilesDBWrapper(name)
 	err := nfdw.Edit().SetSize(size).SetHash(hash).SetFragCount(fragCount).SetUploadTime(uploadTime).SetMerkleTree(mtree).SetStoredFrags(storedFrags).Done()
 	return nfdw, err
