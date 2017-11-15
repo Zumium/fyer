@@ -27,8 +27,18 @@ func TestFragMngr(t *testing.T) {
 	if err := fa.Write(2, testdata); err != nil {
 		t.Fatal(err)
 	}
+	if err := fa.Write(4, testdata); err != nil {
+		t.Fatal(err)
+	}
 
 	dout, err := fa.Read(2)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if bytes.Equal(dout, testdata) {
+		t.Fatalf("fragment read not matching, is %v, should be %v\n", dout, testdata)
+	}
+	dout, err = fa.Read(4)
 	if err != nil {
 		t.Fatal(err)
 	}
