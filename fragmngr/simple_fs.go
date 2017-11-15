@@ -22,12 +22,12 @@ func InitSimpleFSFragManager(basePath string) error {
 
 //Open opens (or creates) a file on the filesystem
 func (m *simpleFSFragManager) Open(name string) (FileAdapter, error) {
-	return newSimpleFSFileAdapter(base, name)
+	return newSimpleFSFileAdapter(m.base, name)
 }
 
 //Remove removes the underlying file from fs
 func (m *simpleFSFragManager) Remove(name string) error {
-	return os.Remove(filepath.Join(base, name))
+	return os.Remove(filepath.Join(m.base, name))
 }
 
 //---------------------------------------------------------
@@ -40,20 +40,24 @@ type simpleFSFileAdapter struct {
 //---------------------- PRIVATE CONSTRUCTOR---------------------
 
 func newSimpleFSFileAdapter(base string, name string) (*simpleFSFileAdapter, error) {
-	f, err := os.Open(filepath.Join(base, name))
+	fpath := filepath.Join(base, name)
+	f, err := os.OpenFile(fpath, os.O_RDWR, 0660)
+	if os.IsNotExist(err) {
+		f, err = os.Create(fpath)
+	}
 	if err != nil {
 		return nil, err
 	}
-	return nil, &simpleFSFileAdapter{
+	return &simpleFSFileAdapter{
 		file:     f,
 		fragSize: 2 * 1024 * 1024,
-	}
+	}, nil
 }
 
 //---------------------- PRIVATE HELPER FUNCTION ---------------------
 
 func (ada *simpleFSFileAdapter) fileDBWrapper() *peer_db.FilesDBWrapper {
-	return &peer_db.NewFilesDBWrapper(filepath.Base(ada.file.Name()))
+	return peer_db.NewFilesDBWrapper(filepath.Base(ada.file.Name()))
 }
 
 // func (ada *simpleFSFileAdapter) checkIndex(index uint64) (valid, last bool) {
@@ -105,10 +109,10 @@ func (ada *simpleFSFileAdapter) Read(index uint64) ([]byte, error) {
 	// 	return
 	// }
 
-	begin := index * ada.fragSize
+	begin := index * uint64(ada.fragSize)
 	d := make([]byte, ada.fragSize)
 
-	if _, err := ada.file.ReadAt(d, begin); err != nil && err != io.EOF {
+	if _, err := ada.file.ReadAt(d, int64(begin)); err != nil && err != io.EOF {
 		return nil, err
 	}
 	return d, nil
@@ -120,7 +124,7 @@ func (ada *simpleFSFileAdapter) Write(index uint64, d []byte) error {
 	// 	return ErrFragIndexOutOfRange
 	// }
 
-	begin := index * ada.fragSize
+	begin := index * uint64(ada.fragSize)
 	// s := uint64(0)
 	// if last {
 	// 	s = ada.size() - begin
@@ -131,7 +135,7 @@ func (ada *simpleFSFileAdapter) Write(index uint64, d []byte) error {
 	// 	return
 	// }
 
-	if _, err := ada.file.WriteAt(d, begin); err != nil {
+	if _, err := ada.file.WriteAt(d, int64(begin)); err != nil {
 		return err
 	}
 
