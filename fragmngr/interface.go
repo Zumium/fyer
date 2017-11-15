@@ -2,7 +2,6 @@ package fragmngr
 
 import (
 	"errors"
-	"sync"
 )
 
 var (
@@ -24,9 +23,9 @@ type FileAdapter interface {
 	Write(index uint64, d []byte) error
 
 	//Exists checks whether the data of given postion exists already in local
-	Exists(index uint64) (bool, error)
+	// Exists(index uint64) (bool, error)
 	//FragCount returns total fragment count
-	FragCount() uint64
+	// FragCount() uint64
 
 	//Close closes the underlying opened file and save all changes
 	Close() error
@@ -39,32 +38,4 @@ type FragManager interface {
 	Open(name string) (FileAdapter, error)
 	//Remove removes the underlying file
 	Remove(name string) error
-}
-
-//====================================================================
-var holder fragManagerHolder
-
-type fragManagerHolder struct {
-	lock        sync.Mutex
-	fragManager FragManager
-}
-
-func (fmh *fragManagerHolder) setFragManager(fm FragManager) bool {
-	fmh.lock.Lock()
-	defer fmh.lock.Unlock()
-
-	if fmh.fragManager != nil {
-		return false
-	}
-	fmh.fragManager = fm
-	return true
-}
-
-func (fmh *fragManagerHolder) Instance() FragManager {
-	return fmh.fragManager
-}
-
-//FragManagerInstance returns the current FragManager instance
-func FragManagerInstance() FragManager {
-	return holder.Instance()
 }
