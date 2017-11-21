@@ -13,3 +13,8 @@ func DBPath() string {
 func FragBasePath() string {
 	return viper.GetString("frag_base")
 }
+
+//MongoAddress returns the mongodb server address in the configuration
+func MongoAddress() string {
+	return viper.GetString("mongo_address")
+}

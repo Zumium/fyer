@@ -8,8 +8,9 @@ import (
 )
 
 const (
-	defaultPeerDBFileName    = "peer.db"  //默认数据库文件名
-	defaultFragManageBaseDir = "fragbase" //默认段管理存储文件夹
+	defaultPeerDBFileName    = "peer.db"         //默认数据库文件名
+	defaultFragManageBaseDir = "fragbase"        //默认段管理存储文件夹
+	defaultMongoAddress      = "127.0.0.1:27017" //默认MongoDB数据库服务器地址
 
 	fyerConfigFileName = "config.yaml"
 )
@@ -28,6 +29,8 @@ func installDefaults() {
 	viper.SetDefault("db_file", filepath.Join(curExecPath, defaultPeerDBFileName))
 	//set default fragment manager's base path
 	viper.SetDefault("frag_base", filepath.Join(curExecPath, defaultFragManageBaseDir))
+	//set default mongodb server address
+	viper.SetDefault("mongo_address", defaultMongoAddress)
 }
 
 func setupFileConfig() {
