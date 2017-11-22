@@ -26,14 +26,12 @@ type FileMeta struct {
 
 	mode fileMetaRecordMode
 	doc  mgoFileMeta
-	err  error
 }
 
 //ToFileMeta creates a new FileMeta to apply furthur db operaions
-func ToFileMeta(name string) (fmeta *FileMeta) {
-	fmeta = &FileMeta{name: name}
-	fmeta.updateState()
-	return fmeta
+func ToFileMeta(name string) (*FileMeta, error) {
+	fmeta := &FileMeta{name: name}
+	return fmeta, fmeta.updateState()
 }
 
 //---------------------private helpers------------------------
@@ -47,41 +45,27 @@ func (fmeta *FileMeta) updateState() error {
 	query := fileMetaC().Find(bson.M{"name": fmeta.name})
 	count, err := query.Count()
 	if err != nil {
-		fmeta.err = err
 		return err
 	}
+
 	if count == 0 {
 		fmeta.mode = fileMetaModeNew
 	} else {
 		fmeta.mode = fileMetaModeNormal
-		if err = query.One(&fmeta.doc); err != nil {
-			fmeta.err = err
-		}
+		err = query.One(&fmeta.doc)
 	}
 	return err
 }
 
 //--------------------public getter functions------------------------
 
-//Err returns the error happened in previous operations
-func (fmeta *FileMeta) Err() error {
-	return fmeta.err
-}
-
 //Name returns the name
 func (fmeta *FileMeta) Name() (string, error) {
-	if err := fmeta.Err(); err != nil {
-		return "", err
-	}
-
 	return fmeta.name, nil
 }
 
 //Size returns the file size
 func (fmeta *FileMeta) Size() (uint64, error) {
-	if err := fmeta.Err(); err != nil {
-		return 0, err
-	}
 	if fmeta.isNew() {
 		return 0, ErrUnsetField
 	}
@@ -91,9 +75,6 @@ func (fmeta *FileMeta) Size() (uint64, error) {
 
 //Hash returns the file hash
 func (fmeta *FileMeta) Hash() ([]byte, error) {
-	if err := fmeta.Err(); err != nil {
-		return nil, err
-	}
 	if fmeta.isNew() {
 		return nil, ErrUnsetField
 	}
@@ -103,9 +84,6 @@ func (fmeta *FileMeta) Hash() ([]byte, error) {
 
 //FragCount returns the file's fragment number
 func (fmeta *FileMeta) FragCount() (uint64, error) {
-	if err := fmeta.Err(); err != nil {
-		return 0, err
-	}
 	if fmeta.isNew() {
 		return 0, ErrUnsetField
 	}
@@ -115,9 +93,6 @@ func (fmeta *FileMeta) FragCount() (uint64, error) {
 
 //UploadTime returns the file's upload time
 func (fmeta *FileMeta) UploadTime() (time.Time, error) {
-	if err := fmeta.Err(); err != nil {
-		return time.Unix(0, 0), err
-	}
 	if fmeta.isNew() {
 		return time.Unix(0, 0), ErrUnsetField
 	}
@@ -127,9 +102,6 @@ func (fmeta *FileMeta) UploadTime() (time.Time, error) {
 
 //MerkleTree returns the file's merkle tree
 func (fmeta *FileMeta) MerkleTree() (*merkle.MTree, error) {
-	if err := fmeta.Err(); err != nil {
-		return nil, err
-	}
 	if fmeta.isNew() {
 		return nil, ErrUnsetField
 	}
@@ -144,10 +116,6 @@ func (fmeta *FileMeta) MerkleTree() (*merkle.MTree, error) {
 
 //Remove removes the corresponding database record
 func (fmeta *FileMeta) Remove() error {
-	if err := fmeta.Err(); err != nil {
-		return err
-	}
-
 	if fmeta.isNew() {
 		return nil
 	}
@@ -235,7 +203,8 @@ func (fmeditor *FileMetaEditor) Done() error {
 	if err := fmeditor.Err(); err != nil {
 		return err
 	}
-	_, err := fileMetaC().Upsert(bson.M{"name": fmeditor.fmeta.name}, &fmeditor.doc)
-	fmeditor.fmeta.updateState()
-	return err
+	if _, err := fileMetaC().Upsert(bson.M{"name": fmeditor.fmeta.name}, &fmeditor.doc); err != nil {
+		return err
+	}
+	return fmeditor.fmeta.updateState()
 }

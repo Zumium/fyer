@@ -17,13 +17,13 @@ func TestFileMetaOperations(t *testing.T) {
 
 	testHash := []byte("hello world")
 
-	fmeta := ToFileMeta("test")
+	fmeta, _ := ToFileMeta("test")
 	if err := fmeta.Edit().SetFragCount(3).SetHash(testHash).SetSize(254).Done(); err != nil {
 		t.Fatal(err)
 	}
 	defer fmeta.Remove()
 
-	fmeta2 := ToFileMeta("test")
+	fmeta2, _ := ToFileMeta("test")
 	fragCount, err := fmeta2.FragCount()
 	if err != nil {
 		t.Fatal(err)
