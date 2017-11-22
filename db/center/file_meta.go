@@ -1,17 +1,11 @@
 package center
 
 import (
-	"errors"
 	"time"
 
 	"github.com/Zumium/fyer/merkle"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-)
-
-var (
-	//ErrUnsetField is returned when getting a field from a new doc
-	ErrUnsetField = errors.New("field is not set")
 )
 
 //fileMetaC returns the file meta collection
@@ -38,11 +32,23 @@ type FileMeta struct {
 //ToFileMeta creates a new FileMeta to apply furthur db operaions
 func ToFileMeta(name string) (fmeta *FileMeta) {
 	fmeta = &FileMeta{name: name}
+	fmeta.updateState()
+	return fmeta
+}
+
+//---------------------private helpers------------------------
+
+func (fmeta *FileMeta) isNew() bool {
+	return fmeta.mode == fileMetaModeNew
+}
+
+//updateState fetches database record and reset struct field's to contain correct value
+func (fmeta *FileMeta) updateState() error {
 	query := fileMetaC().Find(bson.M{"name": fmeta.name})
 	count, err := query.Count()
 	if err != nil {
 		fmeta.err = err
-		return
+		return err
 	}
 	if count == 0 {
 		fmeta.mode = fileMetaModeNew
@@ -52,21 +58,15 @@ func ToFileMeta(name string) (fmeta *FileMeta) {
 			fmeta.err = err
 		}
 	}
-	return
+	return err
 }
 
-//---------------------private helpers------------------------
-
-func (fmeta *FileMeta) isNew() bool {
-	return fmeta.mode == fileMetaModeNew
-}
+//--------------------public getter functions------------------------
 
 //Err returns the error happened in previous operations
 func (fmeta *FileMeta) Err() error {
 	return fmeta.err
 }
-
-//--------------------public getter functions------------------------
 
 //Name returns the name
 func (fmeta *FileMeta) Name() (string, error) {
@@ -236,5 +236,6 @@ func (fmeditor *FileMetaEditor) Done() error {
 		return err
 	}
 	_, err := fileMetaC().Upsert(bson.M{"name": fmeditor.fmeta.name}, &fmeditor.doc)
+	fmeditor.fmeta.updateState()
 	return err
 }
