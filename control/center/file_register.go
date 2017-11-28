@@ -1,4 +1,4 @@
-package control
+package center
 
 import (
 	"sync"
@@ -13,9 +13,9 @@ import (
 
 //FileRegisterStoreFileInfo is used to store file info into database
 //it represents an abstract db operating process
-type FileRegisterStoreFileInfo interface {
-	Store(name string, size uint64, hash []byte, fragCount uint64, mtree *merkle.MTree)
-}
+// type FileRegisterStoreFileInfo interface {
+// 	Store(name string, size uint64, hash []byte, fragCount uint64, mtree *merkle.MTree)
+// }
 
 var (
 	fileRegisterOnce      sync.Once
@@ -23,9 +23,7 @@ var (
 )
 
 //FileRegister -- file registering process controller
-type FileRegister struct {
-	FileInfoStoror FileRegisterStoreFileInfo
-}
+type FileRegister struct{}
 
 //FileRegisterInstance returns the singleton instance of FileRegister
 func FileRegisterInstance() *FileRegister {
