@@ -30,6 +30,7 @@ type FileMeta struct {
 }
 
 //ToFileMeta creates a new FileMeta to apply furthur db operaions
+//It garantees that the error is clear if instance has been successfully created
 func ToFileMeta(name string) (*FileMeta, error) {
 	fmeta := &FileMeta{name: name}
 	return fmeta, fmeta.updateState()
@@ -96,6 +97,11 @@ func (fmeta *FileMeta) FragCount() uint64 {
 //UploadTime returns the file's upload time
 func (fmeta *FileMeta) UploadTime() time.Time {
 	return fmeta.doc.UploadTime
+}
+
+//RawMerkleTree returns the marshaled merkle tree
+func (fmeta *FileMeta) RawMerkleTree() []byte {
+	return fmeta.doc.MerkleTree
 }
 
 //MerkleTree returns the file's merkle tree
