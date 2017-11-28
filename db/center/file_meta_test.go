@@ -24,24 +24,15 @@ func TestFileMetaOperations(t *testing.T) {
 	defer fmeta.Remove()
 
 	fmeta2, _ := ToFileMeta("test")
-	fragCount, err := fmeta2.FragCount()
-	if err != nil {
-		t.Fatal(err)
-	}
+	fragCount := fmeta2.FragCount()
 	if fragCount != 3 {
 		t.Fatalf("frag count mismatching: is %d, should be %d\n", fragCount, 3)
 	}
-	hash, err := fmeta2.Hash()
-	if err != nil {
-		t.Fatal(err)
-	}
+	hash := fmeta2.Hash()
 	if !bytes.Equal(hash, testHash) {
 		t.Fatalf("hash mismatching: is %v, should be %v\n", hash, testHash)
 	}
-	size, err := fmeta2.Size()
-	if err != nil {
-		t.Fatal(err)
-	}
+	size := fmeta2.Size()
 	if size != 254 {
 		t.Fatalf("size mismatching: is %d, should be %d\n", size, 254)
 	}

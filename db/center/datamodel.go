@@ -26,3 +26,11 @@ type mgoFrag struct {
 	FragIndex uint64        `bson:"frag_index,omitempty"`
 	Peer      []string      `bson:"peer,omitempty"`
 }
+
+const mgoPeerCollection = "peer"
+
+type mgoPeer struct {
+	ID      bson.ObjectId `bson:"_id,omitempty"`
+	PeerID  string        `bson:"peer_id,omitempty"`
+	Address string        `bson:"address,omitempty"`
+}
