@@ -73,7 +73,7 @@ message PeerInfoResponse {
 
 service FyerCenter {
     rpc Register (RegisterRequest) returns (google.protobuf.Empty);
-    rpc RegisterPeer (RegisterPeerRequest) returns (google.protobuf.Empty);
+    // rpc RegisterPeer (RegisterPeerRequest) returns (google.protobuf.Empty);
     rpc FileInfo (FileInfoRequest) returns (FileInfoResponse);
     rpc PeerInfo (PeerInfoRequest) returns (PeerInfoResponse);
 }
