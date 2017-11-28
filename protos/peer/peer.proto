@@ -3,20 +3,22 @@ syntax = "proto3";
 package cn.zumium.fyer.peer;
 option go_package = "peer";
 
+import "google/protobuf/empty.proto";
+
 message DeployRequest {
     string name = 1;
     uint64 frag_index = 2;
     bytes data = 3;
 }
 
-message DeployResponse {
-    enum Status {
-        ERROR = 0;
-        OK = 1;
-    }
-    Status status = 1;
-    string msg = 2;
-}
+// message DeployResponse {
+//     enum Status {
+//         ERROR = 0;
+//         OK = 1;
+//     }
+//     Status status = 1;
+//     string msg = 2;
+// }
 
 message FetchRequest {
     string name = 1;
@@ -42,20 +44,20 @@ message FragInfoResponse {
         uint64 frag_index = 1;
         bytes hash = 2;
     }
-    enum Status {
-        NOT_FOUND = 0;
-        OK = 1;
-        NOT_READY = 2;
-        ERROR = 3;
-    }
-    Status status = 1;
-    string msg = 2;
+    // enum Status {
+    //     NOT_FOUND = 0;
+    //     OK = 1;
+    //     NOT_READY = 2;
+    //     ERROR = 3;
+    // }
+    // Status status = 1;
+    // string msg = 2;
 
     map<uint64, FInfo> infos = 3;
 }
 
 service FyerPeer {
-    rpc Deploy (DeployRequest) returns (DeployResponse);
+    rpc Deploy (DeployRequest) returns (google.protobuf.Empty);
     rpc Fetch (FetchRequest) returns (FetchResponse);
     rpc FragInfo (FragInfoRequest) returns (FragInfoResponse);
 }
