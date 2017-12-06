@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43761aa2-e95d-47f5-905e-aab5955e2bce" name="Default" comment="modify RPC design, adjust peer database and implement dispatching algorithm">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fyer.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/fyer.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="43761aa2-e95d-47f5-905e-aab5955e2bce" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/alg/dispatch.go" afterPath="$PROJECT_DIR$/alg/dispatch.go" />
-      <change beforePath="$PROJECT_DIR$/alg/dispatch_test.go" afterPath="$PROJECT_DIR$/alg/dispatch_test.go" />
-      <change beforePath="$PROJECT_DIR$/db/peer/file_db.go" afterPath="$PROJECT_DIR$/db/peer/file_db.go" />
-      <change beforePath="$PROJECT_DIR$/db/peer/file_db_test.go" afterPath="$PROJECT_DIR$/db/peer/file_db_test.go" />
-      <change beforePath="$PROJECT_DIR$/db/peer/stored_frags.go" afterPath="$PROJECT_DIR$/db/peer/stored_frags.go" />
-      <change beforePath="$PROJECT_DIR$/glide.lock" afterPath="$PROJECT_DIR$/glide.lock" />
-      <change beforePath="$PROJECT_DIR$/glide.yaml" afterPath="$PROJECT_DIR$/glide.yaml" />
-      <change beforePath="$PROJECT_DIR$/protos/peer/peer.pb.go" afterPath="$PROJECT_DIR$/protos/peer/peer.pb.go" />
-      <change beforePath="$PROJECT_DIR$/protos/peer/peer.proto" afterPath="$PROJECT_DIR$/protos/peer/peer.proto" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -270,12 +257,20 @@
       <workItem from="1512480890774" duration="544000" />
       <workItem from="1512481545559" duration="430000" />
       <workItem from="1512483463515" duration="3445000" />
-      <workItem from="1512563771672" duration="376000" />
+      <workItem from="1512563771672" duration="413000" />
     </task>
+    <task id="LOCAL-00001" summary="modify RPC design, adjust peer database and implement dispatching algorithm">
+      <created>1512564166004</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1512564166004</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19236000" />
+    <option name="totallyTimeSpent" value="19273000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -652,6 +647,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
