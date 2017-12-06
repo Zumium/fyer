@@ -82,3 +82,16 @@ func (sf *StoredFrags) Remove(n uint64) bool {
 	}
 	return false
 }
+
+//Equal returns whether two StoredFrags are equal
+func (sf *StoredFrags) Equal(sf2 *StoredFrags) bool {
+	if len(sf.Numbers) != len(sf2.Numbers) {
+		return false
+	}
+	for i, n := range sf.Numbers {
+		if sf2.Numbers[i] != n {
+			return false
+		}
+	}
+	return true
+}

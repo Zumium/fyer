@@ -8,7 +8,7 @@ import "google/protobuf/empty.proto";
 message DeployRequest {
     string name = 1;
     uint64 frag_index = 2;
-    bytes data = 3;
+    string source = 3;
 }
 
 // message DeployResponse {
@@ -29,35 +29,35 @@ message FetchResponse {
     bytes data = 1;
 }
 
-message FragInfoRequest {
-    enum InfoType {
-        ALL = 0;
-        FRAG = 1;
-    }
-    string name = 1;
-    InfoType itype = 2;
-    uint64 frag_index = 3;
-}
+//message FragInfoRequest {
+//    enum InfoType {
+//        ALL = 0;
+//        FRAG = 1;
+//    }
+//    string name = 1;
+//    InfoType itype = 2;
+//    uint64 frag_index = 3;
+//}
 
-message FragInfoResponse {
-    message FInfo {
-        uint64 frag_index = 1;
-        bytes hash = 2;
-    }
-    // enum Status {
-    //     NOT_FOUND = 0;
-    //     OK = 1;
-    //     NOT_READY = 2;
-    //     ERROR = 3;
-    // }
-    // Status status = 1;
-    // string msg = 2;
-
-    map<uint64, FInfo> infos = 3;
-}
+//message FragInfoResponse {
+//    message FInfo {
+//        uint64 frag_index = 1;
+//        bytes hash = 2;
+//    }
+//    // enum Status {
+//    //     NOT_FOUND = 0;
+//    //     OK = 1;
+//    //     NOT_READY = 2;
+//    //     ERROR = 3;
+//    // }
+//    // Status status = 1;
+//    // string msg = 2;
+//
+//    map<uint64, FInfo> infos = 3;
+//}
 
 service FyerPeer {
     rpc Deploy (DeployRequest) returns (google.protobuf.Empty);
     rpc Fetch (FetchRequest) returns (FetchResponse);
-    rpc FragInfo (FragInfoRequest) returns (FragInfoResponse);
+//    rpc FragInfo (FragInfoRequest) returns (FragInfoResponse);
 }

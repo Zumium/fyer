@@ -1,5 +1,5 @@
-hash: 41d578fc18931a127939b02083d1aa2ce24598dbf2fd6d43968a81f19b4398f9
-updated: 2017-11-14T09:42:26.263337+08:00
+hash: eb96c421506d38d8bad9f1360bcebd566dde675d46f0c2c735559d0bb4d52bca
+updated: 2017-12-06T20:41:42.161502+08:00
 imports:
 - name: github.com/fsnotify/fsnotify
   version: 4da3e2cfbabc9f751898f250b49f2439785783a1
@@ -10,6 +10,7 @@ imports:
   - ptypes
   - ptypes/any
   - ptypes/duration
+  - ptypes/empty
   - ptypes/timestamp
 - name: github.com/golang/snappy
   version: 553a641470496b2327abcac10b36396bd98e45c9
@@ -48,7 +49,7 @@ imports:
 - name: github.com/spf13/viper
   version: 25b30aa063fc18e48662b86996252eabdcf2f0c7
 - name: github.com/syndtr/goleveldb
-  version: 549b6d6b1c0419617182954dd77770f2e2685ed5
+  version: adf24ef3f94bd13ec4163060b21a5678f22b429b
   subpackages:
   - leveldb
   - leveldb/cache
@@ -63,13 +64,15 @@ imports:
   - leveldb/table
   - leveldb/util
 - name: github.com/xtaci/kcp-go
-  version: 69dab7fa0029c4ee5917b03a6a259762533379d8
+  version: 0dc7be275bda3ba07791a211981b80f2af5d9361
+- name: github.com/Zumium/randutil
+  version: 394561020aecd5d138849dbd43c3024cbebfad89
 - name: golang.org/x/crypto
-  version: 9f005a07e0d31d45e6656d241bb5c0f2efd4bc94
+  version: 94eea52f7b742c7cbe0b03b22f0c4c8631ece122
   subpackages:
   - sha3
 - name: golang.org/x/net
-  version: a337091b0525af65de94df2eb7e98bd9962dcbe2
+  version: a8b9294777976932365dabb6640cf1468d95c70f
   subpackages:
   - context
   - http2
@@ -79,27 +82,29 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 665f6529cca930e27b831a0d1dafffbe1c172924
+  version: 8b4580aae2a0dd0c231a45d3ccb8434ff533b840
   subpackages:
   - unix
 - name: golang.org/x/text
-  version: 88f656faf3f37f690df1a32515b479415e1a6769
+  version: 57961680700a5336d15015c8c50686ca5ba362a4
   subpackages:
   - secure/bidirule
   - transform
   - unicode/bidi
   - unicode/norm
 - name: google.golang.org/genproto
-  version: 11c7f9e547da6db876260ce49ea7536985904c9b
+  version: 7f0da29060c682909f650ad8ed4e515bd74fa12a
   subpackages:
   - googleapis/rpc/status
 - name: google.golang.org/grpc
-  version: 5ffe3083946d5603a0578721101dc8165b1d5b5f
+  version: be077907e29fdb945d351e4284eb5361e7f8924e
   subpackages:
   - balancer
+  - balancer/roundrobin
   - codes
   - connectivity
   - credentials
+  - encoding
   - grpclb/grpc_lb_v1/messages
   - grpclog
   - internal
@@ -108,12 +113,20 @@ imports:
   - naming
   - peer
   - resolver
+  - resolver/dns
+  - resolver/manual
+  - resolver/passthrough
   - stats
   - status
   - tap
   - transport
 - name: gopkg.in/mgo.v2
   version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
+  subpackages:
+  - bson
+  - internal/json
+  - internal/sasl
+  - internal/scram
 - name: gopkg.in/yaml.v2
-  version: eb3733d160e74a9c7e442f435eb3bea458e1d19f
+  version: 287cf08546ab5e7e37d55a84f7ed3fd1db036de5
 testImports: []

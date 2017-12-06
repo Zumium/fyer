@@ -17,3 +17,4 @@ import:
 - package: github.com/pquerna/ffjson
   subpackages:
   - fflib/v1
+- package: github.com/Zumium/randutil
