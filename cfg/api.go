@@ -18,3 +18,23 @@ func FragBasePath() string {
 func MongoAddress() string {
 	return viper.GetString("mongo_address")
 }
+
+//Port returns the RPC service port
+func Port() int {
+	return viper.GetInt("port")
+}
+
+//PeerRegisterPort returns the peer registration service port
+func PeerRegisterPort() int {
+	return viper.GetInt("peer_register_port")
+}
+
+//CenterAddress returns the center's address
+func CenterAddress() string {
+	return viper.GetString("center_address")
+}
+
+//PeerID returns peer's local id (label)
+func PeerID() string {
+	return viper.GetString("peer_id")
+}

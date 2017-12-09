@@ -45,12 +45,13 @@ func (fw *FilesDBWrapper) ClearErr() {
 }
 
 //Has returns true if the file record exists
-func (fw *FilesDBWrapper) Has() (bool, error) {
+func (fw *FilesDBWrapper) Has() bool {
 	ret, err := fw.db.Has(fw.key(""), nil)
 	if err != nil {
-		return false, err
+		fw.setErr(err)
+		return false
 	}
-	return ret, nil
+	return ret
 }
 
 //Size -- file size

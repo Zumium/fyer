@@ -9,7 +9,7 @@ import (
 //文件分派算法使用函数 p=-10^count 确定节点被分派文件段的比例
 type DispatchAlg struct {
 	fragCount uint64
-	replica int
+	replica   int
 
 	weights    []*randutil.Choice
 	holdCounts map[string]uint32
@@ -19,7 +19,7 @@ type DispatchAlg struct {
 func NewDispatchAlg(peers []string, fragCount uint64, replica int) *DispatchAlg {
 	alg := &DispatchAlg{
 		fragCount: fragCount,
-		replica: replica,
+		replica:   replica,
 
 		holdCounts: make(map[string]uint32),
 		weights:    make([]*randutil.Choice, 0, len(peers)),

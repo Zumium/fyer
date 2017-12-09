@@ -19,21 +19,20 @@ import (
 //}
 
 func TestDispatchAlg(t *testing.T) {
-	peers:=[]string{"A","B","C","D","E","F","G","H"}
+	peers := []string{"A", "B", "C", "D", "E", "F", "G", "H"}
 	alg := NewDispatchAlg(peers, 10, 2)
 	dispatchTable := alg.Dispatch()
 
 	t.Log(dispatchTable) //目视检查
 
 	statics := make(map[string]int)
-	for _,peer:=range peers {
-		statics[peer]=0
+	for _, peer := range peers {
+		statics[peer] = 0
 	}
-	for _,peers:=range dispatchTable {
-		for _,peer:=range peers {
+	for _, peers := range dispatchTable {
+		for _, peer := range peers {
 			statics[peer]++
 		}
 	}
 	t.Fatal(statics) //目视检查
 }
-

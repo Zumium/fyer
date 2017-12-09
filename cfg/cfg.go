@@ -31,6 +31,10 @@ func installDefaults() {
 	viper.SetDefault("frag_base", filepath.Join(curExecPath, defaultFragManageBaseDir))
 	//set default mongodb server address
 	viper.SetDefault("mongo_address", defaultMongoAddress)
+	//set default RPC service port
+	viper.SetDefault("port", 4102)
+	//set default peer registration service port
+	viper.SetDefault("peer_register_port", 4103)
 }
 
 func setupFileConfig() {
