@@ -16,6 +16,11 @@ func Open() (err error) {
 	return
 }
 
+//Close closes the database
+func Close() error {
+	return instance().Close()
+}
+
 //instance (for internal use) returns the global database instance
 func instance() *leveldb.DB {
 	return dbInstance
