@@ -38,3 +38,18 @@ func CenterAddress() string {
 func PeerID() string {
 	return viper.GetString("peer_id")
 }
+
+//MaxSendRecvMsgSize returns the max size of sent or received message
+func MaxSendRecvMsgSize() int {
+	return viper.GetInt("max_send_recv_msg_size")
+}
+
+//FragSize returns the size of max fragment
+func FragSize() int64 {
+	return viper.GetInt64("frag_size")
+}
+
+//Replica returns the replica of a frag
+func Replica() int {
+	return viper.GetInt("replica")
+}

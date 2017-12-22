@@ -2,13 +2,20 @@ syntax = "proto3";
 
 package cn.zumium.fyer.peer;
 option go_package = "peer";
+option java_package = "cn.zumium.fyer.proto.peer";
 
 import "google/protobuf/empty.proto";
+import "protos/peer/frag.proto";
 
 message DeployRequest {
+    enum SourceType {
+        CLIENT = 0;
+        PEER = 1;
+    }
     string name = 1;
-    uint64 frag_index = 2;
-    string source = 3;
+    Frag frag = 2;
+    string src = 3;
+    SourceType src_type = 4;
 }
 
 // message DeployResponse {

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package cn.zumium.fyer.util;
 option go_package = "util";
+option java_package = "cn.zumium.fyer.proto.util";
 
 message MerkleItem {
     enum Type {

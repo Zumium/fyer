@@ -6,6 +6,8 @@ import (
 	"github.com/Zumium/fyer/cfg"
 )
 
+//=====================================================================
+
 var holder fragManagerHolder
 
 type fragManagerHolder struct {

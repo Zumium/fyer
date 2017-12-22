@@ -31,6 +31,21 @@ func ToPeerID(peerID string) (*Peer, error) {
 	return p, p.updateState()
 }
 
+//AllPeers gets all peers
+func AllPeers() ([]*Peer, error) {
+	var mgoPeers []mgoPeer
+	if err := peerC().Find(nil).All(&mgoPeers); err != nil {
+		return nil, err
+	}
+
+	peers := make([]*Peer, len(mgoPeers))
+	for i, p := range mgoPeers {
+		peers[i] = &Peer{p.PeerID, peerRecordNormal, p, nil}
+	}
+
+	return peers, nil
+}
+
 //---------------------public helpers------------------------
 
 //IsNew returns whether the record exists in database already

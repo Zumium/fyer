@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package cn.zumium.fyer.center;
 option go_package = "center";
+option java_package = "cn.zumium.fyer.proto.center";
 
 import "google/protobuf/empty.proto";
 
@@ -11,6 +12,7 @@ message RegisterRequest {
     bytes hash = 3;
     uint64 frag_count = 4;
     bytes merkle_tree= 5;
+    string source = 6;
 }
 
 // message RegisterResponse {
@@ -22,9 +24,9 @@ message RegisterRequest {
 //     string msg = 2;
 // }
 
-message RegisterPeerRequest {
-    string peer_id = 1;
-}
+//message RegisterPeerRequest {
+//    string peer_id = 1;
+//}
 
 // message RegisterPeerResponse {
 //     enum Status {

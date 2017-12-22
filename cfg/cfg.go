@@ -35,6 +35,12 @@ func installDefaults() {
 	viper.SetDefault("port", 4102)
 	//set default peer registration service port
 	viper.SetDefault("peer_register_port", 4103)
+	//set up default max recv send message size
+	viper.SetDefault("max_send_recv_msg_size", 128*1024*1024)
+	//set up default file frag count
+	viper.SetDefault("frag_size", 4*1024*1024)
+	//set up default replica of a frag
+	viper.SetDefault("replica", 2)
 }
 
 func setupFileConfig() {

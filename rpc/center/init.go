@@ -6,9 +6,10 @@ import (
 	control_center "github.com/Zumium/fyer/control/center"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	google_protobuf "github.com/golang/protobuf/ptypes/empty"
-	"github.com/xtaci/kcp-go"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+	_ "google.golang.org/grpc/encoding/gzip"
+	"net"
 )
 
 type rpcImpl struct{}
@@ -27,11 +28,11 @@ func (i *rpcImpl) PeerInfo(ctx context.Context, in *pb_center.PeerInfoRequest) (
 
 //Start starts the center's RPC service
 func Start() error {
-	lis, err := kcp.ListenWithOptions(fmt.Sprintf("[%s]:%d", "::", cfg.Port()), nil, 10, 3)
+	lis, err := net.Listen("tcp", fmt.Sprintf("[%s]:%d", "::", cfg.Port()))
 	if err != nil {
 		return err
 	}
-	server := grpc.NewServer()
+	server := grpc.NewServer(grpc.MaxRecvMsgSize(cfg.MaxSendRecvMsgSize()), grpc.MaxSendMsgSize(cfg.MaxSendRecvMsgSize()))
 	pb_center.RegisterFyerCenterServer(server, new(rpcImpl))
 	return server.Serve(lis)
 }

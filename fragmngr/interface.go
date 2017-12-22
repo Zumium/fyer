@@ -2,25 +2,26 @@ package fragmngr
 
 import (
 	"errors"
+	common_peer "github.com/Zumium/fyer/common/peer"
 )
 
-var (
-	//ErrFragIndexOutOfRange -- fragment index out of range
-	ErrFragIndexOutOfRange = errors.New("fragment index out of range")
-	//ErrFragNotExist -- fragment data not exist
-	ErrFragNotExist = errors.New("fragment data not exist")
-	//ErrInvalidParameter -- parameter invalid
-	ErrInvalidParameter = errors.New("parameter is invalid")
-	//ErrWriteDBFail -- failed to write to db
-	ErrWriteDBFail = errors.New("failed to write to db")
-)
+//var (
+//	//ErrFragIndexOutOfRange -- fragment index out of range
+//	ErrFragIndexOutOfRange = errors.New("fragment index out of range")
+//	//ErrFragNotExist -- fragment data not exist
+//	ErrFragNotExist = errors.New("fragment data not exist")
+//	//ErrInvalidParameter -- parameter invalid
+//	ErrInvalidParameter = errors.New("parameter is invalid")
+//	//ErrWriteDBFail -- failed to write to db
+//	ErrWriteDBFail = errors.New("failed to write to db")
+//)
 
 //FileAdapter operate a file to store and provide fragment data
 type FileAdapter interface {
 	//Read reads out fragment data at the give position
-	Read(index uint64) ([]byte, error)
+	Read(frag common_peer.Frag) ([]byte, error)
 	//Write stores data to the given position
-	Write(index uint64, d []byte) error
+	Write(frag common_peer.Frag, d []byte) error
 
 	//Exists checks whether the data of given postion exists already in local
 	// Exists(index uint64) (bool, error)

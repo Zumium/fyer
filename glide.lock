@@ -1,6 +1,16 @@
-hash: eb96c421506d38d8bad9f1360bcebd566dde675d46f0c2c735559d0bb4d52bca
-updated: 2017-12-06T20:41:42.161502+08:00
+hash: 36a66c8fd142d7a25e6e27a99dac17b453f4c8dca4beebfb5650e3e601de55f4
+updated: 2017-12-20T10:12:31.857992+08:00
 imports:
+- name: github.com/beorn7/perks
+  version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
+  subpackages:
+  - quantile
+- name: github.com/coreos/etcd
+  version: 828289db3264378ecd444af7cbc8341a7c901333
+  subpackages:
+  - error
+  - pkg/types
+  - store
 - name: github.com/fsnotify/fsnotify
   version: 4da3e2cfbabc9f751898f250b49f2439785783a1
 - name: github.com/golang/protobuf
@@ -25,17 +35,41 @@ imports:
   - json/parser
   - json/scanner
   - json/token
+- name: github.com/jonboulle/clockwork
+  version: bcac9884e7502bb2b474c0339d889cb981a2f27f
 - name: github.com/magiconair/properties
   version: 49d762b9817ba1c2e9d0c69183c2b4a8b8f1d934
+- name: github.com/matttproud/golang_protobuf_extensions
+  version: c12348ce28de40eed0136aa2b644d0ee0650e56c
+  subpackages:
+  - pbutil
 - name: github.com/mitchellh/mapstructure
   version: 06020f85339e21b2478f756a78e295255ffa4d6a
 - name: github.com/pelletier/go-toml
-  version: 4e9e0ee19b60b13eb79915933f44d8ed5f268bdd
+  version: b8b5e7696574464b2f9bf303a7b37781bb52889f
 - name: github.com/pquerna/ffjson
   version: d49c2bc1aa135aad0c6f4fc2056623ec78f5d5ac
   subpackages:
   - fflib/v1
   - fflib/v1/internal
+- name: github.com/prometheus/client_golang
+  version: 661e31bf844dfca9aeba15f27ea8aa0d485ad212
+  subpackages:
+  - prometheus
+- name: github.com/prometheus/client_model
+  version: 99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c
+  subpackages:
+  - go
+- name: github.com/prometheus/common
+  version: 2e54d0b93cba2fd133edc32211dcc32c06ef72ca
+  subpackages:
+  - expfmt
+  - internal/bitbucket.org/ww/goautoneg
+  - model
+- name: github.com/prometheus/procfs
+  version: f98634e408857669d61064b283c4cde240622865
+  subpackages:
+  - xfs
 - name: github.com/spf13/afero
   version: 8d919cbe7e2627e417f3e45c3c0e489a5b7e2536
   subpackages:
@@ -49,7 +83,7 @@ imports:
 - name: github.com/spf13/viper
   version: 25b30aa063fc18e48662b86996252eabdcf2f0c7
 - name: github.com/syndtr/goleveldb
-  version: adf24ef3f94bd13ec4163060b21a5678f22b429b
+  version: 34011bf325bce385408353a30b101fe5e923eb6e
   subpackages:
   - leveldb
   - leveldb/cache
@@ -63,16 +97,14 @@ imports:
   - leveldb/storage
   - leveldb/table
   - leveldb/util
-- name: github.com/xtaci/kcp-go
-  version: 0dc7be275bda3ba07791a211981b80f2af5d9361
 - name: github.com/Zumium/randutil
   version: 394561020aecd5d138849dbd43c3024cbebfad89
 - name: golang.org/x/crypto
-  version: 94eea52f7b742c7cbe0b03b22f0c4c8631ece122
+  version: d585fd2cc9195196078f516b69daff6744ef5e84
   subpackages:
   - sha3
 - name: golang.org/x/net
-  version: a8b9294777976932365dabb6640cf1468d95c70f
+  version: d866cfc389cec985d6fda2859936a575a55a3ab6
   subpackages:
   - context
   - http2
@@ -82,22 +114,22 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 8b4580aae2a0dd0c231a45d3ccb8434ff533b840
+  version: 571f7bbbe08da2a8955aed9d4db316e78630e9a3
   subpackages:
   - unix
 - name: golang.org/x/text
-  version: 57961680700a5336d15015c8c50686ca5ba362a4
+  version: eb22672bea55af56d225d4e35405f4d2e9f062a0
   subpackages:
   - secure/bidirule
   - transform
   - unicode/bidi
   - unicode/norm
 - name: google.golang.org/genproto
-  version: 7f0da29060c682909f650ad8ed4e515bd74fa12a
+  version: a8101f21cf983e773d0c1133ebc5424792003214
   subpackages:
   - googleapis/rpc/status
 - name: google.golang.org/grpc
-  version: be077907e29fdb945d351e4284eb5361e7f8924e
+  version: e687fa4e6424368ece6e4fe727cea2c806a0fcb4
   subpackages:
   - balancer
   - balancer/roundrobin
@@ -105,6 +137,7 @@ imports:
   - connectivity
   - credentials
   - encoding
+  - encoding/gzip
   - grpclb/grpc_lb_v1/messages
   - grpclog
   - internal
@@ -114,7 +147,6 @@ imports:
   - peer
   - resolver
   - resolver/dns
-  - resolver/manual
   - resolver/passthrough
   - stats
   - status

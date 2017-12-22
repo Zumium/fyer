@@ -6,9 +6,10 @@ import (
 	control_peer "github.com/Zumium/fyer/control/peer"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
 	google_protobuf "github.com/golang/protobuf/ptypes/empty"
-	"github.com/xtaci/kcp-go"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+	_ "google.golang.org/grpc/encoding/gzip"
+	"net"
 )
 
 type rpcImpl struct{}
@@ -23,11 +24,11 @@ func (i *rpcImpl) Fetch(ctx context.Context, in *pb_peer.FetchRequest) (*pb_peer
 
 //Start starts the RPC service
 func Start() error {
-	lis, err := kcp.ListenWithOptions(fmt.Sprintf("[%s]:%d", "::", cfg.Port()), nil, 10, 3)
+	lis, err := net.Listen("tcp", fmt.Sprintf("[%s]:%d", "::", cfg.Port()))
 	if err != nil {
 		return err
 	}
-	server := grpc.NewServer()
+	server := grpc.NewServer(grpc.MaxSendMsgSize(cfg.MaxSendRecvMsgSize()), grpc.MaxRecvMsgSize(cfg.MaxSendRecvMsgSize()))
 	pb_peer.RegisterFyerPeerServer(server, new(rpcImpl))
 	return server.Serve(lis)
 }

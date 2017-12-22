@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	common_peer "github.com/Zumium/fyer/common/peer"
 	peer_db "github.com/Zumium/fyer/db/peer"
 )
 
@@ -57,7 +58,7 @@ func newSimpleFSFileAdapter(base string, name string) (*simpleFSFileAdapter, err
 //---------------------- PRIVATE HELPER FUNCTION ---------------------
 
 func (ada *simpleFSFileAdapter) fileDBWrapper() *peer_db.FilesDBWrapper {
-	return peer_db.NewFilesDBWrapper(filepath.Base(ada.file.Name()))
+	return peer_db.ToFile(filepath.Base(ada.file.Name()))
 }
 
 // func (ada *simpleFSFileAdapter) checkIndex(index uint64) (valid, last bool) {
@@ -91,7 +92,7 @@ func (ada *simpleFSFileAdapter) fileDBWrapper() *peer_db.FilesDBWrapper {
 
 //------------------------ IMPLEMENT INTERFACE FileAdapter-----------------------
 
-func (ada *simpleFSFileAdapter) Read(index uint64) ([]byte, error) {
+func (ada *simpleFSFileAdapter) Read(frag common_peer.Frag) ([]byte, error) {
 	// valid, last := ada.checkIndex(index)
 	// if !valid {
 	// 	return nil, ErrFragIndexOutOfRange
@@ -109,22 +110,22 @@ func (ada *simpleFSFileAdapter) Read(index uint64) ([]byte, error) {
 	// 	return
 	// }
 
-	begin := index * uint64(ada.fragSize)
-	d := make([]byte, ada.fragSize)
+	//begin := index * uint64(ada.fragSize)
+	d := make([]byte, frag.Size)
 
-	if _, err := ada.file.ReadAt(d, int64(begin)); err != nil && err != io.EOF {
+	if _, err := ada.file.ReadAt(d, frag.Start); err != nil && err != io.EOF {
 		return nil, err
 	}
 	return d, nil
 }
 
-func (ada *simpleFSFileAdapter) Write(index uint64, d []byte) error {
+func (ada *simpleFSFileAdapter) Write(frag common_peer.Frag, d []byte) error {
 	// valid, last := ada.checkIndex(index)
 	// if !valid {
 	// 	return ErrFragIndexOutOfRange
 	// }
 
-	begin := index * uint64(ada.fragSize)
+	//begin := index * uint64(ada.fragSize)
 	// s := uint64(0)
 	// if last {
 	// 	s = ada.size() - begin
@@ -135,7 +136,7 @@ func (ada *simpleFSFileAdapter) Write(index uint64, d []byte) error {
 	// 	return
 	// }
 
-	if _, err := ada.file.WriteAt(d, int64(begin)); err != nil {
+	if _, err := ada.file.WriteAt(d, frag.Start); err != nil {
 		return err
 	}
 

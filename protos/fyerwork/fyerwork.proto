@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "fyerwork";
+option java_multiple_files = true;
+option java_package = "cn.zumium.fyerwork.proto.fyerwork";
+
+package cn.zumium.fyerwork;
+
+message FetchRequest {
+    message Range {
+        int64 start = 1;
+        int64 size = 2;
+    }
+    string name = 1;
+    Range range = 2;
+}
+
+message FetchResponse {
+    bytes data = 1;
+}
+
+service Fyerwork {
+    rpc Fetch(FetchRequest) returns (FetchResponse) ;
+}
