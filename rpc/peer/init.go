@@ -5,21 +5,14 @@ import (
 	"github.com/Zumium/fyer/cfg"
 	control_peer "github.com/Zumium/fyer/control/peer"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
-	google_protobuf "github.com/golang/protobuf/ptypes/empty"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	_ "google.golang.org/grpc/encoding/gzip"
 	"net"
 )
 
-type rpcImpl struct{}
-
-func (i *rpcImpl) Deploy(ctx context.Context, in *pb_peer.DeployRequest) (*google_protobuf.Empty, error) {
-	return control_peer.DeployInstance().GRPCHandler()(ctx, in)
-}
-
-func (i *rpcImpl) Fetch(ctx context.Context, in *pb_peer.FetchRequest) (*pb_peer.FetchResponse, error) {
-	return control_peer.FetchInstance().GRPCHandler()(ctx, in)
+type rpcImpl struct {
+	control_peer.DeployController
+	control_peer.FetchController
 }
 
 //Start starts the RPC service

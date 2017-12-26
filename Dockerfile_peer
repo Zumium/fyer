@@ -1,0 +1,12 @@
+FROM golang:alpine
+VOLUME /fyer/fragBase
+ENV FYER_DB_FILE /fyer/fyer.db
+ENV FYER_FRAG_BASE /fyer/fragBase
+ENV FYER_PORT 4102
+#Environments need to be manually set
+ENV FYER_CENTER_ADDRESS 127.0.0.1
+ENV FYER_PEER_ID test
+#------------------------------------
+COPY ./ $GOPATH/src/github.com/Zumium/fyer/
+RUN go install github.com/Zumium/fyer/peer && rm -rf $GOPATH/src
+CMD $GOPATH/bin/peer

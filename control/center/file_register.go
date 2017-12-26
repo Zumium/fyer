@@ -12,7 +12,6 @@ import (
 	util_center "github.com/Zumium/fyer/util/center"
 	google_protobuf "github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
-	"sync"
 	"time"
 )
 
@@ -22,24 +21,11 @@ import (
 // 	Store(name string, size uint64, hash []byte, fragCount uint64, mtree *merkle.MTree)
 // }
 
-var (
-	fileRegisterOnce      sync.Once
-	fileRegisterSingleton *FileRegister
-)
-
-//FileRegister -- file registering process controller
-type FileRegister struct{}
-
-//FileRegisterInstance returns the singleton instance of FileRegister
-func FileRegisterInstance() *FileRegister {
-	fileRegisterOnce.Do(func() {
-		fileRegisterSingleton = &FileRegister{}
-	})
-	return fileRegisterSingleton
-}
+//FileRegisterController -- file registering process controller
+type FileRegisterController struct{}
 
 //storeToDB stores file meta data to db
-func (fr *FileRegister) storeToDB(in *pb_center.RegisterRequest) error {
+func (fr *FileRegisterController) storeToDB(in *pb_center.RegisterRequest) error {
 	dbHandler, err := db_center.ToFileMeta(in.Name)
 	if err != nil {
 		return err
@@ -57,7 +43,7 @@ func (fr *FileRegister) storeToDB(in *pb_center.RegisterRequest) error {
 }
 
 //dispatchFrags makes deploying requests to peers
-func (fr *FileRegister) dispatchFrags(in *pb_center.RegisterRequest) ([]common_peer.Frag, map[uint64][]string, error) {
+func (fr *FileRegisterController) dispatchFrags(in *pb_center.RegisterRequest) ([]common_peer.Frag, map[uint64][]string, error) {
 	peers, err := db_center.AllPeers()
 	if err != nil {
 		return nil, nil, err
@@ -67,14 +53,15 @@ func (fr *FileRegister) dispatchFrags(in *pb_center.RegisterRequest) ([]common_p
 		peerIDs = append(peerIDs, p.PeerID())
 	}
 
-	frags := alg.FragCutter{Size: in.GetSize(), FragSize: cfg.FragSize()}.Cut()
+	fragCutter := &alg.FragCutter{Size: in.GetSize(), FragSize: cfg.FragSize()}
+	frags := fragCutter.Cut()
 	dispatches := alg.NewDispatchAlg(peerIDs, uint64(len(frags)), cfg.Replica()).Dispatch()
 
 	return frags, dispatches, nil
 }
 
 //makeDeploys make RPC deploying calls to peers
-func (fr *FileRegister) makeDeploys(frags []common_peer.Frag, dispatches map[uint64][]string, in *pb_center.RegisterRequest) error {
+func (fr *FileRegisterController) makeDeploys(frags []common_peer.Frag, dispatches map[uint64][]string, in *pb_center.RegisterRequest) error {
 	for i, dispatch := range dispatches { // i -- frag index, dispatch -- array of peers' id on whom the frag will be deployed
 		for j, peerID := range dispatch {
 			pbFrag := common_peer.FragCommonToPb(frags[i])
@@ -109,21 +96,18 @@ func (fr *FileRegister) makeDeploys(frags []common_peer.Frag, dispatches map[uin
 	return nil
 }
 
-//GRPCHandler returns a GRPC server implementation function, which can be used an
-//callback function to input file registering request into the controller
-func (fr *FileRegister) GRPCHandler() func(context.Context, *pb_center.RegisterRequest) (*google_protobuf.Empty, error) {
-	return func(ctx context.Context, in *pb_center.RegisterRequest) (*google_protobuf.Empty, error) {
-		if err := fr.storeToDB(in); err != nil {
-			return nil, err
-		}
-		frags, dispatches, err := fr.dispatchFrags(in)
-		if err != nil {
-			return nil, err
-		}
-		if err = fr.makeDeploys(frags, dispatches, in); err != nil {
-			return nil, err
-		}
-
-		return new(google_protobuf.Empty), nil
+//handles GRPC request
+func (fr *FileRegisterController) Register(ctx context.Context, in *pb_center.RegisterRequest) (*google_protobuf.Empty, error) {
+	if err := fr.storeToDB(in); err != nil {
+		return nil, err
 	}
+	frags, dispatches, err := fr.dispatchFrags(in)
+	if err != nil {
+		return nil, err
+	}
+	if err = fr.makeDeploys(frags, dispatches, in); err != nil {
+		return nil, err
+	}
+
+	return new(google_protobuf.Empty), nil
 }

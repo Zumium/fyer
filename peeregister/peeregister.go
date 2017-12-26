@@ -7,6 +7,10 @@ import (
 	"net"
 )
 
+var (
+	ErrNoIPFound = errors.New("cannot found any IP addresses")
+)
+
 //InitServer initializes and starts the tcp registration service
 func InitServer() error {
 	lis, err := net.ListenTCP("tcp", &net.TCPAddr{IP: net.ParseIP("::"), Port: cfg.PeerRegisterPort()}) //Listens for all address of IPv4 and IPv6
@@ -52,7 +56,14 @@ func handlePeerRegistering(conn *net.TCPConn) {
 
 //RegisterLocal registers the local peer's id at the center peer
 func RegisterLocal() error {
-	conn, err := net.DialTCP("tcp", nil, &net.TCPAddr{IP: net.ParseIP(cfg.CenterAddress()), Port: cfg.PeerRegisterPort()})
+	ips,err:=net.LookupIP(cfg.CenterAddress())
+	if err!=nil {
+		return err
+	}
+	if len(ips) == 0 {
+		return ErrNoIPFound
+	}
+	conn, err := net.DialTCP("tcp", nil, &net.TCPAddr{IP: ips[0], Port: cfg.PeerRegisterPort()})
 	if err != nil {
 		return err
 	}

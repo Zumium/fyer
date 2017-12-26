@@ -12,7 +12,7 @@ const (
 	defaultFragManageBaseDir = "fragbase"        //默认段管理存储文件夹
 	defaultMongoAddress      = "127.0.0.1:27017" //默认MongoDB数据库服务器地址
 
-	fyerConfigFileName = "config.yaml"
+	//fyerConfigFileName = "config.yaml"
 )
 
 func installDefaults() {
@@ -43,10 +43,10 @@ func installDefaults() {
 	viper.SetDefault("replica", 2)
 }
 
-func setupFileConfig() {
-	viper.SetConfigFile(fyerConfigFileName)
-	viper.AddConfigPath(".")
-}
+//func setupFileConfig() {
+//	viper.SetConfigFile(fyerConfigFileName)
+//	viper.AddConfigPath(".")
+//}
 
 func setupEnvConfig() {
 	viper.SetEnvPrefix("FYER")
@@ -57,8 +57,9 @@ func setupEnvConfig() {
 //through its APIs
 func Init() error {
 	setupEnvConfig()
-	setupFileConfig()
+	//setupFileConfig()
 	installDefaults()
 
-	return viper.ReadInConfig()
+	//return viper.ReadInConfig()
+	return nil
 }

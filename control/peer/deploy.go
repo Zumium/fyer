@@ -12,26 +12,11 @@ import (
 	util_peer "github.com/Zumium/fyer/util/peer"
 	google_protobuf "github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
-	"sync"
 )
 
-var (
-	deploySingleton *Deploy
-	deployOnce      sync.Once
-)
+type DeployController struct{}
 
-type Deploy struct{}
-
-//DeployInstance returns the instance of Deploy struct
-//this is the only way to get the instance of Deploy
-func DeployInstance() *Deploy {
-	deployOnce.Do(func() {
-		deploySingleton = new(Deploy)
-	})
-	return deploySingleton
-}
-
-func (d *Deploy) fetchFragDataFromFyerwork(in *pb_peer.DeployRequest) ([]byte, error) {
+func (d *DeployController) fetchFragDataFromFyerwork(in *pb_peer.DeployRequest) ([]byte, error) {
 	conn, err := connectionmngr.ConnectTo(in.GetSrc())
 	if err != nil {
 		return nil, err
@@ -52,7 +37,7 @@ func (d *Deploy) fetchFragDataFromFyerwork(in *pb_peer.DeployRequest) ([]byte, e
 	return resp.GetData(), nil
 }
 
-func (d *Deploy) fetchFragDataFromPeer(address string, in *pb_peer.DeployRequest) ([]byte, error) {
+func (d *DeployController) fetchFragDataFromPeer(address string, in *pb_peer.DeployRequest) ([]byte, error) {
 	//get the connection to the source
 	conn, err := connectionmngr.ConnectTo(fmt.Sprintf("%s:%d", address, cfg.Port()))
 	if err != nil {
@@ -68,7 +53,7 @@ func (d *Deploy) fetchFragDataFromPeer(address string, in *pb_peer.DeployRequest
 	return resp.GetData(), nil
 }
 
-func (d *Deploy) writeFragData(data []byte, in *pb_peer.DeployRequest) error {
+func (d *DeployController) writeFragData(data []byte, in *pb_peer.DeployRequest) error {
 	fileAdapter, err := fragmngr.FMInstance().Open(in.GetName())
 	if err != nil {
 		return err
@@ -80,7 +65,7 @@ func (d *Deploy) writeFragData(data []byte, in *pb_peer.DeployRequest) error {
 	return nil
 }
 
-func (d *Deploy) addDBRecord(in *pb_peer.DeployRequest) error {
+func (d *DeployController) addDBRecord(in *pb_peer.DeployRequest) error {
 	fileDB := db_peer.ToFile(in.GetName())
 	exist := fileDB.Has()
 	if fileDB.Err() != nil {
@@ -103,35 +88,33 @@ func (d *Deploy) addDBRecord(in *pb_peer.DeployRequest) error {
 	return nil
 }
 
-func (d *Deploy) GRPCHandler() func(context.Context, *pb_peer.DeployRequest) (*google_protobuf.Empty, error) {
-	return func(ctx context.Context, in *pb_peer.DeployRequest) (*google_protobuf.Empty, error) {
-		var err error
-		var data []byte
+func (d *DeployController) Deploy(ctx context.Context, in *pb_peer.DeployRequest) (*google_protobuf.Empty, error) {
+	var err error
+	var data []byte
 
-		switch in.GetSrcType() {
-		case pb_peer.DeployRequest_CLIENT:
-			//download the specified frag data from client, then put it in "data"
-			data, err = d.fetchFragDataFromFyerwork(in)
-		case pb_peer.DeployRequest_PEER:
-			address, err := util_peer.ResolvePeerIDByCenter(in.GetSrc())
-			if err != nil {
-				return nil, err
-			}
-			data, err = d.fetchFragDataFromPeer(address, in)
-		}
+	switch in.GetSrcType() {
+	case pb_peer.DeployRequest_CLIENT:
+		//download the specified frag data from client, then put it in "data"
+		data, err = d.fetchFragDataFromFyerwork(in)
+	case pb_peer.DeployRequest_PEER:
+		address, err := util_peer.ResolvePeerIDByCenter(in.GetSrc())
 		if err != nil {
 			return nil, err
 		}
-
-		//store frag data
-		if err := d.writeFragData(data, in); err != nil {
-			return nil, err
-		}
-		//add db record
-		if err := d.addDBRecord(in); err != nil {
-			return nil, err
-		}
-
-		return new(google_protobuf.Empty), nil
+		data, err = d.fetchFragDataFromPeer(address, in)
 	}
+	if err != nil {
+		return nil, err
+	}
+
+	//store frag data
+	if err := d.writeFragData(data, in); err != nil {
+		return nil, err
+	}
+	//add db record
+	if err := d.addDBRecord(in); err != nil {
+		return nil, err
+	}
+
+	return new(google_protobuf.Empty), nil
 }

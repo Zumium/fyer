@@ -1,7 +1,6 @@
 package fragmngr
 
 import (
-	"errors"
 	common_peer "github.com/Zumium/fyer/common/peer"
 )
 

@@ -2,7 +2,6 @@ package peer
 
 import (
 	common_peer "github.com/Zumium/fyer/common/peer"
-	"github.com/coreos/etcd/store"
 )
 
 //StoredFrags represents fragment index numbers which has been stored locally
@@ -16,27 +15,33 @@ func NewEmptyStoredFrags() *StoredFrags {
 	return new(StoredFrags)
 }
 
-//Has returns true if the n-th fragment has been stored locally
-func (sf *StoredFrags) Has(n uint64) bool {
+func (sf *StoredFrags) binarySearch(n uint64) int {
 	l := len(sf.Frags)
 	switch l {
 	case 0:
-		return false
+		return -1
 	case 1:
-		return sf.Frags[0].Index == n
+		if sf.Frags[0].Index == n {
+			return 0
+		} else {
+			return -1
+		}
 	}
 	if n < sf.Frags[0].Index || n > sf.Frags[l-1].Index {
-		return false
+		return -1
 	}
 	//二分查找
 	var (
-		begin uint64
-		end   = uint64(l - 1)
-		mid   uint64
+		begin int
+		end   = l - 1
+		mid   int
 	)
 	for begin < end {
-		if sf.Frags[begin].Index == n || sf.Frags[end].Index == n {
-			return true
+		if sf.Frags[begin].Index == n {
+			return begin
+		}
+		if sf.Frags[end].Index == n {
+			return end
 		}
 		mid = (begin + end) / 2
 		if n < sf.Frags[mid].Index {
@@ -45,7 +50,20 @@ func (sf *StoredFrags) Has(n uint64) bool {
 			begin = mid + 1
 		}
 	}
-	return false
+	return -1
+}
+
+//Has returns true if the n-th fragment has been stored locally
+func (sf *StoredFrags) Has(n uint64) bool {
+	return sf.binarySearch(n) != -1
+}
+
+func (sf *StoredFrags) Find(n uint64) (common_peer.Frag, bool) {
+	pos := sf.binarySearch(n)
+	if pos == -1 {
+		return common_peer.Frag{}, false
+	}
+	return sf.Frags[pos], true
 }
 
 //AddFrag inserts a new Frag while keep it sorted, returns the result whether
