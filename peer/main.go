@@ -7,10 +7,16 @@ import (
 	"github.com/Zumium/fyer/peeregister"
 	rpc_peer "github.com/Zumium/fyer/rpc/peer"
 	util_bin "github.com/Zumium/fyer/util/bin"
+	"runtime"
+	"github.com/Zumium/fyer/log"
 )
 
 func main() {
 	if err := cfg.Init(); err != nil {
+		util_bin.ReportErr(err)
+		return
+	}
+	if err := log.Init(); err != nil {
 		util_bin.ReportErr(err)
 		return
 	}

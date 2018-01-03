@@ -7,11 +7,14 @@ import (
 	"github.com/Zumium/fyer/fragmngr"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
 	"golang.org/x/net/context"
+	"github.com/op/go-logging"
 )
 
 var (
 	ErrFileNotFound = errors.New("File not found")
 	ErrFragNotFound = errors.New("Frag not found")
+
+	fetchLogger = logging.MustGetLogger("FetchController")
 )
 
 type FetchController struct{}
@@ -45,11 +48,14 @@ func (ftch *FetchController) readLocalFrag(in *pb_peer.FetchRequest) common_peer
 
 func (ftch *FetchController) Fetch(ctx context.Context, in *pb_peer.FetchRequest) (*pb_peer.FetchResponse, error) {
 	//check whether file and frag exist
+	fetchLogger.Info("New fetch request")
+	deployLogger.Debug(in.String())
 	if err := ftch.checkFileAndFragExist(in); err != nil {
 		return nil, err
 	}
 
 	//read the specified data out and return the response
+	fetchLogger.Info("Reading file frag")
 	fileApater, err := fragmngr.FMInstance().Open(in.GetName())
 	if err != nil {
 		return nil, err
@@ -61,6 +67,7 @@ func (ftch *FetchController) Fetch(ctx context.Context, in *pb_peer.FetchRequest
 	if err != nil {
 		return nil, err
 	}
+	fetchLogger.Debugf("Read %d bytes out", len(d))
 
 	return &pb_peer.FetchResponse{Data: d}, nil
 }

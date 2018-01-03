@@ -56,8 +56,8 @@ func handlePeerRegistering(conn *net.TCPConn) {
 
 //RegisterLocal registers the local peer's id at the center peer
 func RegisterLocal() error {
-	ips,err:=net.LookupIP(cfg.CenterAddress())
-	if err!=nil {
+	ips, err := net.LookupIP(cfg.CenterAddress())
+	if err != nil {
 		return err
 	}
 	if len(ips) == 0 {

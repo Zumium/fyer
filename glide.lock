@@ -1,16 +1,6 @@
-hash: 36a66c8fd142d7a25e6e27a99dac17b453f4c8dca4beebfb5650e3e601de55f4
-updated: 2017-12-20T10:12:31.857992+08:00
+hash: b82b0f42150b73dd9ce38767f9baf8db391810fda6f981a5ae631ba3dcdc5fee
+updated: 2018-01-03T15:25:55.791964+08:00
 imports:
-- name: github.com/beorn7/perks
-  version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
-  subpackages:
-  - quantile
-- name: github.com/coreos/etcd
-  version: 828289db3264378ecd444af7cbc8341a7c901333
-  subpackages:
-  - error
-  - pkg/types
-  - store
 - name: github.com/fsnotify/fsnotify
   version: 4da3e2cfbabc9f751898f250b49f2439785783a1
 - name: github.com/golang/protobuf
@@ -35,43 +25,21 @@ imports:
   - json/parser
   - json/scanner
   - json/token
-- name: github.com/jonboulle/clockwork
-  version: bcac9884e7502bb2b474c0339d889cb981a2f27f
 - name: github.com/magiconair/properties
   version: 49d762b9817ba1c2e9d0c69183c2b4a8b8f1d934
-- name: github.com/matttproud/golang_protobuf_extensions
-  version: c12348ce28de40eed0136aa2b644d0ee0650e56c
-  subpackages:
-  - pbutil
 - name: github.com/mitchellh/mapstructure
   version: 06020f85339e21b2478f756a78e295255ffa4d6a
+- name: github.com/op/go-logging
+  version: 970db520ece77730c7e4724c61121037378659d9
 - name: github.com/pelletier/go-toml
-  version: b8b5e7696574464b2f9bf303a7b37781bb52889f
+  version: 0131db6d737cfbbfb678f8b7d92e55e27ce46224
 - name: github.com/pquerna/ffjson
   version: d49c2bc1aa135aad0c6f4fc2056623ec78f5d5ac
   subpackages:
   - fflib/v1
   - fflib/v1/internal
-- name: github.com/prometheus/client_golang
-  version: 661e31bf844dfca9aeba15f27ea8aa0d485ad212
-  subpackages:
-  - prometheus
-- name: github.com/prometheus/client_model
-  version: 99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c
-  subpackages:
-  - go
-- name: github.com/prometheus/common
-  version: 2e54d0b93cba2fd133edc32211dcc32c06ef72ca
-  subpackages:
-  - expfmt
-  - internal/bitbucket.org/ww/goautoneg
-  - model
-- name: github.com/prometheus/procfs
-  version: f98634e408857669d61064b283c4cde240622865
-  subpackages:
-  - xfs
 - name: github.com/spf13/afero
-  version: 8d919cbe7e2627e417f3e45c3c0e489a5b7e2536
+  version: 57afd63c68602b63ed976de00dd066ccb3c319db
   subpackages:
   - mem
 - name: github.com/spf13/cast
@@ -100,7 +68,7 @@ imports:
 - name: github.com/Zumium/randutil
   version: 394561020aecd5d138849dbd43c3024cbebfad89
 - name: golang.org/x/crypto
-  version: d585fd2cc9195196078f516b69daff6744ef5e84
+  version: 0fcca4842a8d74bfddc2c96a073bd2a4d2a7a2e8
   subpackages:
   - sha3
 - name: golang.org/x/net
@@ -114,11 +82,11 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 571f7bbbe08da2a8955aed9d4db316e78630e9a3
+  version: 83801418e1b59fb1880e363299581ee543af32ca
   subpackages:
   - unix
 - name: golang.org/x/text
-  version: eb22672bea55af56d225d4e35405f4d2e9f062a0
+  version: e19ae1496984b1c655b8044a65c0300a3c878dd3
   subpackages:
   - secure/bidirule
   - transform
@@ -129,9 +97,10 @@ imports:
   subpackages:
   - googleapis/rpc/status
 - name: google.golang.org/grpc
-  version: e687fa4e6424368ece6e4fe727cea2c806a0fcb4
+  version: f3955b8e9e244dd4dd4bc4f7b7a23a8445400a76
   subpackages:
   - balancer
+  - balancer/base
   - balancer/roundrobin
   - codes
   - connectivity
@@ -160,5 +129,5 @@ imports:
   - internal/sasl
   - internal/scram
 - name: gopkg.in/yaml.v2
-  version: 287cf08546ab5e7e37d55a84f7ed3fd1db036de5
+  version: c95af922eae69f190717a0b7148960af8c55a072
 testImports: []

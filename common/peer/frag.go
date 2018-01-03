@@ -1,6 +1,7 @@
 package peer
 
 import (
+	"fmt"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
 )
 
@@ -9,6 +10,10 @@ type Frag struct {
 	Index uint64 `json:"index"`
 	Start int64  `json:"start"`
 	Size  int64  `json:"size"`
+}
+
+func (f *Frag) String() string {
+	return fmt.Sprintf("Frag - index: %d, start: %d, size: %d", f.Index, f.Start, f.Size)
 }
 
 func FragCommonToPb(frag Frag) *pb_peer.Frag {

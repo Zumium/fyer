@@ -10,9 +10,9 @@ message RegisterRequest {
     string name = 1;
     uint64 size = 2;
     bytes hash = 3;
-    uint64 frag_count = 4;
-    bytes merkle_tree= 5;
-    string source = 6;
+//    uint64 frag_count = 4;
+//    bytes merkle_tree= 5;
+    string source = 4;
 }
 
 // message RegisterResponse {

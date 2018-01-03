@@ -41,6 +41,8 @@ func installDefaults() {
 	viper.SetDefault("frag_size", 4*1024*1024)
 	//set up default replica of a frag
 	viper.SetDefault("replica", 2)
+	//set up default logging level
+	viper.SetDefault("log_level", "INFO")
 }
 
 //func setupFileConfig() {

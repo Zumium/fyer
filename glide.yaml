@@ -16,3 +16,4 @@ import:
   subpackages:
   - fflib/v1
 - package: github.com/Zumium/randutil
+- package: github.com/op/go-logging
