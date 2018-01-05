@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	common_peer "github.com/Zumium/fyer/common/peer"
+	common "github.com/Zumium/fyer/common"
 	peer_db "github.com/Zumium/fyer/db/peer"
 )
 
@@ -92,7 +92,7 @@ func (ada *simpleFSFileAdapter) fileDBWrapper() *peer_db.FilesDBWrapper {
 
 //------------------------ IMPLEMENT INTERFACE FileAdapter-----------------------
 
-func (ada *simpleFSFileAdapter) Read(frag common_peer.Frag) ([]byte, error) {
+func (ada *simpleFSFileAdapter) Read(frag common.Frag) ([]byte, error) {
 	// valid, last := ada.checkIndex(index)
 	// if !valid {
 	// 	return nil, ErrFragIndexOutOfRange
@@ -119,7 +119,7 @@ func (ada *simpleFSFileAdapter) Read(frag common_peer.Frag) ([]byte, error) {
 	return d, nil
 }
 
-func (ada *simpleFSFileAdapter) Write(frag common_peer.Frag, d []byte) error {
+func (ada *simpleFSFileAdapter) Write(frag common.Frag, d []byte) error {
 	// valid, last := ada.checkIndex(index)
 	// if !valid {
 	// 	return ErrFragIndexOutOfRange

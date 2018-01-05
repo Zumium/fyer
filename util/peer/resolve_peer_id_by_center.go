@@ -1,15 +1,13 @@
 package peer
 
 import (
-	"fmt"
-	"github.com/Zumium/fyer/cfg"
 	"github.com/Zumium/fyer/connectionmngr"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	"golang.org/x/net/context"
 )
 
 func ResolvePeerIDByCenter(peerID string) (string, error) {
-	centerConn, err := connectionmngr.ConnectTo(fmt.Sprintf("%s:%d", cfg.CenterAddress(), cfg.Port()))
+	centerConn, err := connectionmngr.ConnectToCenter()
 	if err != nil {
 		return peerID, err
 	}

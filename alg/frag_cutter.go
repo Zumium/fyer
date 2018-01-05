@@ -1,7 +1,7 @@
 package alg
 
 import (
-	common_peer "github.com/Zumium/fyer/common/peer"
+	common "github.com/Zumium/fyer/common"
 )
 
 type FragCutter struct {
@@ -9,9 +9,13 @@ type FragCutter struct {
 	FragSize int64
 }
 
-func (fragCutter *FragCutter) Cut() (frags []common_peer.Frag) {
+func NewFragCutter(size uint64, fragSize int64) *FragCutter {
+	return &FragCutter{size, fragSize}
+}
+
+func (fragCutter *FragCutter) Cut() (frags []common.Frag) {
 	fragCount := fragCutter.Size / uint64(fragCutter.FragSize)
-	frags = make([]common_peer.Frag, fragCount+1)
+	frags = make([]common.Frag, fragCount+1)
 	var start int64
 	for i := uint64(0); i < fragCount; i++ {
 		frags[i].Index = i

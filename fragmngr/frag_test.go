@@ -2,7 +2,7 @@ package fragmngr
 
 import (
 	"bytes"
-	common_peer "github.com/Zumium/fyer/common/peer"
+	"github.com/Zumium/fyer/common"
 	"os"
 	"testing"
 )
@@ -26,8 +26,8 @@ func TestFragMngr(t *testing.T) {
 	testdata := []byte("hello world")
 	testdataSize := int64(len(testdata))
 
-	testFragIndex0 := common_peer.Frag{0, 0, testdataSize}
-	testFragIndex2 := common_peer.Frag{2, 2*testdataSize - 1, testdataSize}
+	testFragIndex0 := common.Frag{0, 0, testdataSize}
+	testFragIndex2 := common.Frag{2, 2*testdataSize - 1, testdataSize}
 
 	if err := fa.Write(testFragIndex0, testdata); err != nil {
 		t.Fatal(err)

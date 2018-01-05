@@ -5,9 +5,9 @@ import (
 	"github.com/Zumium/fyer/cfg"
 	control_peer "github.com/Zumium/fyer/control/peer"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
+	"github.com/xtaci/kcp-go"
 	"google.golang.org/grpc"
 	_ "google.golang.org/grpc/encoding/gzip"
-	"net"
 )
 
 type rpcImpl struct {
@@ -17,7 +17,7 @@ type rpcImpl struct {
 
 //Start starts the RPC service
 func Start() error {
-	lis, err := net.Listen("tcp", fmt.Sprintf("[%s]:%d", "::", cfg.Port()))
+	lis, err := kcp.ListenWithOptions(fmt.Sprintf("[%s]:%d", "::", cfg.Port()), nil, 10, 3)
 	if err != nil {
 		return err
 	}

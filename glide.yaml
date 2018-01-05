@@ -1,19 +1,29 @@
-package: .
+package: github.com/Zumium/fyer
 import:
-- package: google.golang.org/grpc
-  version: ^1.6.0
-- package: golang.org/x/net
+- package: github.com/Zumium/randutil
+- package: github.com/golang/protobuf
   subpackages:
-  - context
-- package: golang.org/x/crypto
-  subpackages:
-  - sha3
-- package: gopkg.in/mgo.v2
-- package: github.com/syndtr/goleveldb
-  subpackages:
-  - leveldb
+  - proto
+  - ptypes/empty
+- package: github.com/pkg/errors
+  version: ^0.8.0
 - package: github.com/pquerna/ffjson
   subpackages:
   - fflib/v1
-- package: github.com/Zumium/randutil
-- package: github.com/op/go-logging
+- package: github.com/spf13/viper
+  version: ^1.0.0
+- package: github.com/syndtr/goleveldb
+  subpackages:
+  - leveldb
+- package: github.com/xtaci/kcp-go
+  version: ^3.23.0
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: google.golang.org/grpc
+  version: ^1.9.0
+  subpackages:
+  - encoding/gzip
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson

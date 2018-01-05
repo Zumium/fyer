@@ -1,7 +1,7 @@
 package fragmngr
 
 import (
-	common_peer "github.com/Zumium/fyer/common/peer"
+	common "github.com/Zumium/fyer/common"
 )
 
 //var (
@@ -18,9 +18,9 @@ import (
 //FileAdapter operate a file to store and provide fragment data
 type FileAdapter interface {
 	//Read reads out fragment data at the give position
-	Read(frag common_peer.Frag) ([]byte, error)
+	Read(frag common.Frag) ([]byte, error)
 	//Write stores data to the given position
-	Write(frag common_peer.Frag, d []byte) error
+	Write(frag common.Frag, d []byte) error
 
 	//Exists checks whether the data of given postion exists already in local
 	// Exists(index uint64) (bool, error)

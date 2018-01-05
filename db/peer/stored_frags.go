@@ -1,13 +1,13 @@
 package peer
 
 import (
-	common_peer "github.com/Zumium/fyer/common/peer"
+	common "github.com/Zumium/fyer/common"
 )
 
 //StoredFrags represents fragment index numbers which has been stored locally
 // type StoredFrags []uint64
 type StoredFrags struct {
-	Frags []common_peer.Frag `json:"frags"`
+	Frags []common.Frag `json:"frags"`
 }
 
 //NewEmptyStoredFrags creates an new empty StoredFrags struct
@@ -58,24 +58,24 @@ func (sf *StoredFrags) Has(n uint64) bool {
 	return sf.binarySearch(n) != -1
 }
 
-func (sf *StoredFrags) Find(n uint64) (common_peer.Frag, bool) {
+func (sf *StoredFrags) Find(n uint64) (common.Frag, bool) {
 	pos := sf.binarySearch(n)
 	if pos == -1 {
-		return common_peer.Frag{}, false
+		return common.Frag{}, false
 	}
 	return sf.Frags[pos], true
 }
 
 //AddFrag inserts a new Frag while keep it sorted, returns the result whether
 //the frag has been successfully inserted
-func (sf *StoredFrags) AddFrag(frag common_peer.Frag) bool {
+func (sf *StoredFrags) AddFrag(frag common.Frag) bool {
 	for i := 0; i < len(sf.Frags); i++ {
 		if sf.Frags[i].Index < frag.Index {
 			continue
 		} else if sf.Frags[i].Index == frag.Index {
 			return false
 		} else {
-			sf.Frags = append(sf.Frags, common_peer.Frag{})
+			sf.Frags = append(sf.Frags, common.Frag{})
 			copy(sf.Frags[i+1:], sf.Frags[i:])
 			sf.Frags[i] = frag
 			return true
@@ -87,7 +87,7 @@ func (sf *StoredFrags) AddFrag(frag common_peer.Frag) bool {
 
 //Add does the same thing as AddFrag
 func (sf *StoredFrags) Add(index uint64, start int64, size int64) bool {
-	return sf.AddFrag(common_peer.Frag{index, start, size})
+	return sf.AddFrag(common.Frag{index, start, size})
 }
 
 //Remove removes the given number
@@ -103,7 +103,7 @@ func (sf *StoredFrags) Remove(n uint64) bool {
 			} else {
 				//n refers to one element of the middle elements
 				copy(sf.Frags[i:], sf.Frags[i+1:])
-				sf.Frags[len(sf.Frags)-1] = common_peer.Frag{}
+				sf.Frags[len(sf.Frags)-1] = common.Frag{}
 				sf.Frags = sf.Frags[:len(sf.Frags)-1]
 			}
 			return true

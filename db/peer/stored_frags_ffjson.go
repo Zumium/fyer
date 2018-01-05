@@ -6,7 +6,7 @@ package peer
 import (
 	"bytes"
 	"fmt"
-	"github.com/Zumium/fyer/common/peer"
+	"github.com/Zumium/fyer/common"
 	fflib "github.com/pquerna/ffjson/fflib/v1"
 )
 
@@ -181,7 +181,7 @@ mainparse:
 
 handle_Frags:
 
-	/* handler: j.Frags type=[]peer.Frag kind=slice quoted=false*/
+	/* handler: j.Frags type=[]common.Frag kind=slice quoted=false*/
 
 	{
 
@@ -195,13 +195,13 @@ handle_Frags:
 			j.Frags = nil
 		} else {
 
-			j.Frags = []peer.Frag{}
+			j.Frags = []common.Frag{}
 
 			wantVal := true
 
 			for {
 
-				var tmpJFrags peer.Frag
+				var tmpJFrags common.Frag
 
 				tok = fs.Scan()
 				if tok == fflib.FFTok_error {
@@ -222,7 +222,7 @@ handle_Frags:
 					wantVal = true
 				}
 
-				/* handler: tmpJFrags type=peer.Frag kind=struct quoted=false*/
+				/* handler: tmpJFrags type=common.Frag kind=struct quoted=false*/
 
 				{
 					if tok == fflib.FFTok_null {

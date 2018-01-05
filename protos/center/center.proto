@@ -54,7 +54,7 @@ message FileInfoResponse {
     uint64 size = 1;
     bytes hash = 2;
     uint64 frag_count = 3;
-    bytes merkle_tree = 4;
+//    bytes merkle_tree = 4;
 }
 
 message PeerInfoRequest {
@@ -73,9 +73,30 @@ message PeerInfoResponse {
     string address = 1;
 }
 
+message FragInfoRequest {
+    string name = 1;
+}
+
+message FragInfoResponse {
+    bytes frags = 1;
+}
+
+message FragDistributionRequest {
+    string name = 1;
+}
+
+message FragDistributionResponse {
+    message PeerList {
+        repeated string peers = 1;
+    }
+    repeated PeerList distribution = 1;
+}
+
 service FyerCenter {
     rpc Register (RegisterRequest) returns (google.protobuf.Empty);
     // rpc RegisterPeer (RegisterPeerRequest) returns (google.protobuf.Empty);
     rpc FileInfo (FileInfoRequest) returns (FileInfoResponse);
     rpc PeerInfo (PeerInfoRequest) returns (PeerInfoResponse);
+    rpc FragInfo (FragInfoRequest) returns (FragInfoResponse);
+    rpc FragDistribution (FragDistributionRequest) returns (FragDistributionResponse);
 }

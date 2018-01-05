@@ -1,5 +1,5 @@
-hash: b82b0f42150b73dd9ce38767f9baf8db391810fda6f981a5ae631ba3dcdc5fee
-updated: 2018-01-03T15:25:55.791964+08:00
+hash: 3d8a15fc126c5f885ecf0c78dfa59a621e0c203faf79d76fd1109c7150f2986c
+updated: 2018-01-05T21:31:18.598682+08:00
 imports:
 - name: github.com/fsnotify/fsnotify
   version: 4da3e2cfbabc9f751898f250b49f2439785783a1
@@ -25,14 +25,18 @@ imports:
   - json/parser
   - json/scanner
   - json/token
+- name: github.com/klauspost/cpuid
+  version: ae832f27941af41db13bd6d8efd2493e3b22415a
+- name: github.com/klauspost/reedsolomon
+  version: 6bb6130ff6a76a904c1841707d65603aec9cc288
 - name: github.com/magiconair/properties
   version: 49d762b9817ba1c2e9d0c69183c2b4a8b8f1d934
 - name: github.com/mitchellh/mapstructure
   version: 06020f85339e21b2478f756a78e295255ffa4d6a
-- name: github.com/op/go-logging
-  version: 970db520ece77730c7e4724c61121037378659d9
 - name: github.com/pelletier/go-toml
   version: 0131db6d737cfbbfb678f8b7d92e55e27ce46224
+- name: github.com/pkg/errors
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/pquerna/ffjson
   version: d49c2bc1aa135aad0c6f4fc2056623ec78f5d5ac
   subpackages:
@@ -65,24 +69,45 @@ imports:
   - leveldb/storage
   - leveldb/table
   - leveldb/util
+- name: github.com/templexxx/cpufeat
+  version: 3794dfbfb04749f896b521032f69383f24c3687e
+- name: github.com/templexxx/xor
+  version: 0af8e873c554da75f37f2049cdffda804533d44c
+- name: github.com/tjfoc/gmsm
+  version: 98aa888b79d8de04afe0fccf45ed10594efc858b
+  subpackages:
+  - sm4
+- name: github.com/xtaci/kcp-go
+  version: 86eebd5cadb519b7c9306082c7eb3bcee2c49a7b
 - name: github.com/Zumium/randutil
   version: 394561020aecd5d138849dbd43c3024cbebfad89
 - name: golang.org/x/crypto
   version: 0fcca4842a8d74bfddc2c96a073bd2a4d2a7a2e8
   subpackages:
-  - sha3
+  - blowfish
+  - cast5
+  - pbkdf2
+  - salsa20
+  - salsa20/salsa
+  - tea
+  - twofish
+  - xtea
 - name: golang.org/x/net
-  version: d866cfc389cec985d6fda2859936a575a55a3ab6
+  version: 42fe2e1c20de1054d3d30f82cc9fb5b41e2e3767
   subpackages:
+  - bpf
   - context
   - http2
   - http2/hpack
   - idna
+  - internal/iana
+  - internal/socket
   - internal/timeseries
+  - ipv4
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 83801418e1b59fb1880e363299581ee543af32ca
+  version: a3f2cbd54cf5dfe3fbaccf76375fdb12f67654c8
   subpackages:
   - unix
 - name: golang.org/x/text
@@ -129,5 +154,5 @@ imports:
   - internal/sasl
   - internal/scram
 - name: gopkg.in/yaml.v2
-  version: c95af922eae69f190717a0b7148960af8c55a072
+  version: 0e4404da71227dcc02fb1deee803d93e86d08f72
 testImports: []

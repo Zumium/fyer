@@ -66,8 +66,17 @@ func (alg *DispatchAlg) selectGroup() []string {
 }
 
 //Dispatch run
-func (alg *DispatchAlg) Dispatch() map[uint64][]string {
-	result := make(map[uint64][]string)
+//func (alg *DispatchAlg) Dispatch() map[uint64][]string {
+//	result := make(map[uint64][]string)
+//
+//	for i := uint64(0); i < alg.fragCount; i++ {
+//		result[i] = alg.selectGroup()
+//	}
+//
+//	return result
+//}
+func (alg *DispatchAlg) Dispatch() [][]string {
+	result := make([][]string, alg.fragCount)
 
 	for i := uint64(0); i < alg.fragCount; i++ {
 		result[i] = alg.selectGroup()

@@ -3,7 +3,7 @@ package center
 import (
 	"time"
 
-	"github.com/Zumium/fyer/merkle"
+	//"github.com/Zumium/fyer/merkle"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -100,20 +100,20 @@ func (fmeta *FileMeta) UploadTime() time.Time {
 }
 
 //RawMerkleTree returns the marshaled merkle tree
-func (fmeta *FileMeta) RawMerkleTree() []byte {
-	return fmeta.doc.MerkleTree
-}
-
-//MerkleTree returns the file's merkle tree
-func (fmeta *FileMeta) MerkleTree() *merkle.MTree {
-	mtree, err := merkle.Unmarshal(fmeta.doc.MerkleTree)
-	if err != nil {
-		fmeta.err = err
-		return nil
-	}
-
-	return mtree
-}
+//func (fmeta *FileMeta) RawMerkleTree() []byte {
+//	return fmeta.doc.MerkleTree
+//}
+//
+////MerkleTree returns the file's merkle tree
+//func (fmeta *FileMeta) MerkleTree() *merkle.MTree {
+//	mtree, err := merkle.Unmarshal(fmeta.doc.MerkleTree)
+//	if err != nil {
+//		fmeta.err = err
+//		return nil
+//	}
+//
+//	return mtree
+//}
 
 //Remove removes the corresponding database record
 func (fmeta *FileMeta) Remove() error {
@@ -181,19 +181,19 @@ func (fmeditor *FileMetaEditor) SetUploadTime(t time.Time) *FileMetaEditor {
 }
 
 //SetMerkleTree sets the file merkle tree
-func (fmeditor *FileMetaEditor) SetMerkleTree(mtree *merkle.MTree) *FileMetaEditor {
-	if fmeditor.Err() != nil {
-		return fmeditor
-	}
-
-	b, err := merkle.Marshal(mtree)
-	if err != nil {
-		fmeditor.err = err
-		return fmeditor
-	}
-	fmeditor.doc.MerkleTree = b
-	return fmeditor
-}
+//func (fmeditor *FileMetaEditor) SetMerkleTree(mtree *merkle.MTree) *FileMetaEditor {
+//	if fmeditor.Err() != nil {
+//		return fmeditor
+//	}
+//
+//	b, err := merkle.Marshal(mtree)
+//	if err != nil {
+//		fmeditor.err = err
+//		return fmeditor
+//	}
+//	fmeditor.doc.MerkleTree = b
+//	return fmeditor
+//}
 
 //Done commits the changes to database
 func (fmeditor *FileMetaEditor) Done() error {

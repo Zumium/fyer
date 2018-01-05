@@ -5,7 +5,6 @@ option go_package = "peer";
 option java_package = "cn.zumium.fyer.proto.peer";
 
 import "google/protobuf/empty.proto";
-import "protos/peer/frag.proto";
 
 message DeployRequest {
     enum SourceType {
@@ -13,7 +12,7 @@ message DeployRequest {
         PEER = 1;
     }
     string name = 1;
-    Frag frag = 2;
+    bytes frag = 2;
     string src = 3;
     SourceType src_type = 4;
 }

@@ -16,10 +16,10 @@ func (finfo *FileInfoController) FileInfo(ctx context.Context, in *pb_center.Fil
 		return nil, err
 	}
 	finfoResp := &pb_center.FileInfoResponse{
-		Size:       dbHandler.Size(),
-		Hash:       dbHandler.Hash(),
-		FragCount:  dbHandler.FragCount(),
-		MerkleTree: dbHandler.RawMerkleTree(),
+		Size:      dbHandler.Size(),
+		Hash:      dbHandler.Hash(),
+		FragCount: dbHandler.FragCount(),
+		//MerkleTree: dbHandler.RawMerkleTree(),
 	}
 	if err := dbHandler.Err(); err != nil {
 		return nil, err

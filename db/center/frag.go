@@ -1,6 +1,7 @@
 package center
 
 import (
+	common "github.com/Zumium/fyer/common"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -19,8 +20,8 @@ func fragC() *mgo.Collection {
 
 //Frag is file fragment database handler
 type Frag struct {
-	name      string
-	fragIndex uint64
+	name string
+	//fragIndex uint64
 
 	mode fragRecordMode
 	doc  mgoFrag
@@ -30,20 +31,15 @@ type Frag struct {
 //--------------------constructor-----------------------
 
 //ToFragFile creates a new handler of given file
-func ToFragFile(name string) *Frag {
-	return &Frag{name: name}
-}
-
-//SelectIndex selects the given frag index of file
-func (f *Frag) SelectIndex(idx uint64) error {
-	f.fragIndex = idx
-	return f.updateState()
+func ToFragFile(name string) (*Frag, error) {
+	frag := &Frag{name: name}
+	return frag, frag.updateState()
 }
 
 //--------------------private helpers--------------------
 
 func (f *Frag) updateState() error {
-	query := fragC().Find(bson.M{"name": f.name, "index": f.fragIndex})
+	query := fragC().Find(bson.M{"name": f.name})
 	count, err := query.Count()
 	if err != nil {
 		return err
@@ -81,14 +77,23 @@ func (f *Frag) Name() string {
 	return f.doc.Name
 }
 
-//FragIndex returns the index of the frag
-func (f *Frag) FragIndex() uint64 {
-	return f.doc.FragIndex
+//Frags returns the frags
+func (f *Frag) Frags() []common.Frag {
+	return f.doc.Frags
 }
 
-//Peer returns the list of peers in which stores the specified frag
-func (f *Frag) Peer() []string {
-	return f.doc.Peer
+//FragByIndex returns the frag with specified index
+func (f *Frag) FragByIndex(idx uint64) common.Frag {
+	return f.Frags()[idx]
+}
+
+//PeerList returns the list of peers in which stores the specified frag
+func (f *Frag) PeerList() [][]string {
+	return f.doc.PeerList
+}
+
+func (f *Frag) Remove() error {
+	return fragC().Remove(bson.M{"name": f.name})
 }
 
 //====================editor=======================
@@ -111,13 +116,23 @@ func (fe *FragEditor) Err() error {
 	return fe.err
 }
 
-//SetPeer sets the list of peers who stores the given frag
-func (fe *FragEditor) SetPeer(peer []string) *FragEditor {
+//SetPeerList sets the list of peers
+func (fe *FragEditor) SetPeerList(peerList [][]string) *FragEditor {
 	if err := fe.Err(); err != nil {
 		return fe
 	}
 
-	fe.doc.Peer = peer
+	fe.doc.PeerList = peerList
+	return fe
+}
+
+//SetFrags sets the frags
+func (fe *FragEditor) SetFrags(frags []common.Frag) *FragEditor {
+	if err := fe.Err(); err != nil {
+		return fe
+	}
+
+	fe.doc.Frags = frags
 	return fe
 }
 
@@ -126,8 +141,8 @@ func (fe *FragEditor) Done() error {
 	if err := fe.Err(); err != nil {
 		return err
 	}
-	fe.doc.Name, fe.doc.FragIndex = fe.frag.name, fe.frag.fragIndex
-	if _, err := fragC().Upsert(bson.M{"name": fe.frag.name, "frag_index": fe.frag.fragIndex}, fe.doc); err != nil {
+	fe.doc.Name = fe.frag.name
+	if _, err := fragC().Upsert(bson.M{"name": fe.frag.name}, fe.doc); err != nil {
 		return err
 	}
 	return fe.frag.updateState()

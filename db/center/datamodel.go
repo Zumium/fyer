@@ -1,9 +1,9 @@
 package center
 
 import (
-	"time"
-
+	common "github.com/Zumium/fyer/common"
 	"gopkg.in/mgo.v2/bson"
+	"time"
 )
 
 const mgoFileMetaCollection = "filemeta"
@@ -20,11 +20,18 @@ type mgoFileMeta struct {
 
 const mgoFragCollection = "frag"
 
+//type mgoFrag struct {
+//	ID        bson.ObjectId `bson:"_id,omitempty"`
+//	Name      string        `bson:"name,omitempty"` //index
+//	FragIndex uint64        `bson:"frag_index,omitempty"`
+//	Peer      []string      `bson:"peer,omitempty"`
+//}
+
 type mgoFrag struct {
-	ID        bson.ObjectId `bson:"_id,omitempty"`
-	Name      string        `bson:"name,omitempty"` //index
-	FragIndex uint64        `bson:"frag_index,omitempty"`
-	Peer      []string      `bson:"peer,omitempty"`
+	ID       bson.ObjectId `bson:"_id,omitempty"`
+	Name     string        `bson:"name,omitempty"`
+	Frags    []common.Frag `bson:"frags,omitempty"`
+	PeerList [][]string    `bson:"peer_list,omitempty"`
 }
 
 const mgoPeerCollection = "peer"

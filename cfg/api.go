@@ -1,7 +1,6 @@
 package cfg
 
 import (
-	"github.com/op/go-logging"
 	"github.com/spf13/viper"
 )
 
@@ -55,20 +54,20 @@ func Replica() int {
 	return viper.GetInt("replica")
 }
 
-func LogLevel() logging.Level {
-	switch viper.GetString("log_level") {
-	case "DEBUG":
-		return logging.DEBUG
-	case "INFO":
-		return logging.INFO
-	case "NOTICE":
-		return logging.NOTICE
-	case "WARNING":
-		return logging.WARNING
-	case "ERROR":
-		return logging.ERROR
-	case "CRITICAL":
-		return logging.CRITICAL
-	}
-	return logging.INFO
-}
+//func LogLevel() logging.Level {
+//	switch viper.GetString("log_level") {
+//	case "DEBUG":
+//		return logging.DEBUG
+//	case "INFO":
+//		return logging.INFO
+//	case "NOTICE":
+//		return logging.NOTICE
+//	case "WARNING":
+//		return logging.WARNING
+//	case "ERROR":
+//		return logging.ERROR
+//	case "CRITICAL":
+//		return logging.CRITICAL
+//	}
+//	return logging.INFO
+//}

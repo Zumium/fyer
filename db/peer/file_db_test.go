@@ -3,7 +3,7 @@ package peer
 import (
 	"testing"
 
-	common_peer "github.com/Zumium/fyer/common/peer"
+	"github.com/Zumium/fyer/common"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/storage"
 )
@@ -19,7 +19,7 @@ func TestFileDBWrapper(t *testing.T) {
 	filename := "testfile"
 
 	f := ToFile(filename)
-	testStoredFrags1 := &StoredFrags{Frags: []common_peer.Frag{
+	testStoredFrags1 := &StoredFrags{Frags: []common.Frag{
 		{0, 0, 2047},
 		{1, 2048, 4095},
 	}}
