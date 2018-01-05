@@ -1,6 +1,8 @@
 package fyerwork
 
 import (
+	"fmt"
+	"github.com/Zumium/fyer/cfg"
 	"github.com/Zumium/fyer/connectionmngr"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	"golang.org/x/net/context"
@@ -9,7 +11,7 @@ import (
 var defaultUploadController = new(UploadController)
 
 func UploadFile(name string, size uint64, hash []byte, laddr string) error {
-	return defaultUploadController.Upload(name, size, hash, laddr)
+	return defaultUploadController.Upload(name, size, hash, fmt.Sprintf("%s:%d", laddr, cfg.Port()))
 }
 
 type UploadController struct{}

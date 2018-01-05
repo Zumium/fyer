@@ -2,12 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43761aa2-e95d-47f5-905e-aab5955e2bce" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/example/download/main.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/example/upload/main.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/filemanager/filemanager_test.go" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile_center" afterPath="$PROJECT_DIR$/Dockerfile_center" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile_peer" afterPath="$PROJECT_DIR$/Dockerfile_peer" />
+      <change beforePath="$PROJECT_DIR$/center/main.go" afterPath="$PROJECT_DIR$/center/main.go" />
+      <change beforePath="$PROJECT_DIR$/cfg/cfg.go" afterPath="$PROJECT_DIR$/cfg/cfg.go" />
+      <change beforePath="$PROJECT_DIR$/client/main.go" afterPath="$PROJECT_DIR$/client/main.go" />
+      <change beforePath="$PROJECT_DIR$/connectionmngr/connectionmngr.go" afterPath="$PROJECT_DIR$/connectionmngr/connectionmngr.go" />
       <change beforePath="$PROJECT_DIR$/control/center/file_info.go" afterPath="$PROJECT_DIR$/control/center/file_info.go" />
+      <change beforePath="$PROJECT_DIR$/control/center/file_register.go" afterPath="$PROJECT_DIR$/control/center/file_register.go" />
       <change beforePath="$PROJECT_DIR$/control/center/frag_distribution.go" afterPath="$PROJECT_DIR$/control/center/frag_distribution.go" />
       <change beforePath="$PROJECT_DIR$/control/center/frag_info.go" afterPath="$PROJECT_DIR$/control/center/frag_info.go" />
       <change beforePath="$PROJECT_DIR$/control/center/peer_info.go" afterPath="$PROJECT_DIR$/control/center/peer_info.go" />
+      <change beforePath="$PROJECT_DIR$/control/fyerwork/download.go" afterPath="$PROJECT_DIR$/control/fyerwork/download.go" />
       <change beforePath="$PROJECT_DIR$/control/fyerwork/fetch.go" afterPath="$PROJECT_DIR$/control/fyerwork/fetch.go" />
+      <change beforePath="$PROJECT_DIR$/control/fyerwork/upload.go" afterPath="$PROJECT_DIR$/control/fyerwork/upload.go" />
+      <change beforePath="$PROJECT_DIR$/control/peer/deploy.go" afterPath="$PROJECT_DIR$/control/peer/deploy.go" />
       <change beforePath="$PROJECT_DIR$/control/peer/fetch.go" afterPath="$PROJECT_DIR$/control/peer/fetch.go" />
+      <change beforePath="$PROJECT_DIR$/db/center/file_meta_test.go" afterPath="$PROJECT_DIR$/db/center/file_meta_test.go" />
+      <change beforePath="$PROJECT_DIR$/peer/main.go" afterPath="$PROJECT_DIR$/peer/main.go" />
+      <change beforePath="$PROJECT_DIR$/rpc/center/rpc.go" afterPath="$PROJECT_DIR$/rpc/center/rpc.go" />
+      <change beforePath="$PROJECT_DIR$/rpc/fyerwork/rpc.go" afterPath="$PROJECT_DIR$/rpc/fyerwork/rpc.go" />
+      <change beforePath="$PROJECT_DIR$/rpc/peer/rpc.go" afterPath="$PROJECT_DIR$/rpc/peer/rpc.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,28 +40,7 @@
     <favorites_list name="fyer" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="file_register.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control/center/file_register.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1921">
-              <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="file_info.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/control/center/file_info.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,20 +71,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/peeregister/peeregister.go" />
-        <option value="$PROJECT_DIR$/cfg/cfg.go" />
-        <option value="$PROJECT_DIR$/log/log.go" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/db/center/file_meta.go" />
-        <option value="$PROJECT_DIR$/Dockerfile_center" />
-        <option value="$PROJECT_DIR$/Dockerfile_peer" />
         <option value="$PROJECT_DIR$/protos/peer/frag.proto" />
         <option value="$PROJECT_DIR$/client/fyerwork_rpc.go" />
         <option value="$PROJECT_DIR$/rpc/center/init.go" />
         <option value="$PROJECT_DIR$/rpc/peer/init.go" />
         <option value="$PROJECT_DIR$/filemanager/file_manager.go" />
         <option value="$PROJECT_DIR$/fyerwork/rpc.go" />
-        <option value="$PROJECT_DIR$/rpc/peer/rpc.go" />
         <option value="$PROJECT_DIR$/alg/dispatch.go" />
         <option value="$PROJECT_DIR$/alg/download_manager_test.go" />
         <option value="$PROJECT_DIR$/alg/download_balancer.go" />
@@ -101,20 +91,12 @@
         <option value="$PROJECT_DIR$/db/center/frag.go" />
         <option value="$PROJECT_DIR$/alg/frag_cutter.go" />
         <option value="$PROJECT_DIR$/common/frag.go" />
-        <option value="$PROJECT_DIR$/rpc/center/rpc.go" />
-        <option value="$PROJECT_DIR$/connectionmngr/connectionmngr.go" />
-        <option value="$PROJECT_DIR$/control/fyerwork/download.go" />
         <option value="$PROJECT_DIR$/util/peer/resolve_peer_id_by_center.go" />
-        <option value="$PROJECT_DIR$/control/fyerwork/upload.go" />
-        <option value="$PROJECT_DIR$/rpc/fyerwork/rpc.go" />
-        <option value="$PROJECT_DIR$/client/main.go" />
         <option value="$PROJECT_DIR$/client/client_test.go" />
         <option value="$PROJECT_DIR$/log/log_test.go" />
         <option value="$PROJECT_DIR$/center/main.go" />
         <option value="$PROJECT_DIR$/peer/main.go" />
         <option value="$PROJECT_DIR$/cfg/api.go" />
-        <option value="$PROJECT_DIR$/control/center/file_register.go" />
-        <option value="$PROJECT_DIR$/control/peer/deploy.go" />
         <option value="$PROJECT_DIR$/db/center/frag_test.go" />
         <option value="$PROJECT_DIR$/db/peer/file_db_test.go" />
         <option value="$PROJECT_DIR$/fragmngr/frag_test.go" />
@@ -124,6 +106,22 @@
         <option value="$PROJECT_DIR$/control/center/frag_info.go" />
         <option value="$PROJECT_DIR$/control/center/frag_distribution.go" />
         <option value="$PROJECT_DIR$/control/center/file_info.go" />
+        <option value="$PROJECT_DIR$/Dockerfile_center" />
+        <option value="$PROJECT_DIR$/Dockerfile_peer" />
+        <option value="$PROJECT_DIR$/cfg/cfg.go" />
+        <option value="$PROJECT_DIR$/filemanager/filemanager_test.go" />
+        <option value="$PROJECT_DIR$/control/center/file_register.go" />
+        <option value="$PROJECT_DIR$/client/main.go" />
+        <option value="$PROJECT_DIR$/control/fyerwork/upload.go" />
+        <option value="$PROJECT_DIR$/example/upload/main.go" />
+        <option value="$PROJECT_DIR$/rpc/center/rpc.go" />
+        <option value="$PROJECT_DIR$/rpc/fyerwork/rpc.go" />
+        <option value="$PROJECT_DIR$/rpc/peer/rpc.go" />
+        <option value="$PROJECT_DIR$/connectionmngr/connectionmngr.go" />
+        <option value="$PROJECT_DIR$/db/center/file_meta_test.go" />
+        <option value="$PROJECT_DIR$/control/peer/deploy.go" />
+        <option value="$PROJECT_DIR$/example/download/main.go" />
+        <option value="$PROJECT_DIR$/control/fyerwork/download.go" />
       </list>
     </option>
   </component>
@@ -134,8 +132,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1769" />
-    <option name="y" value="78" />
+    <option name="x" value="-1685" />
+    <option name="y" value="99" />
     <option name="width" value="1523" />
     <option name="height" value="884" />
   </component>
@@ -231,6 +229,23 @@
               <item name="fyer" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
               <item name="peer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyer" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyer" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="download" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyer" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="upload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fyer" type="b2602c69:ProjectViewProjectNode" />
@@ -366,7 +381,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build file_register.go">
+  <component name="RunManager" selected="Go Test.TestFileMetaOperations in file_meta_test.go">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -397,23 +412,23 @@
       <package value="github.com/Zumium/fyer" />
       <directory value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="TestDownloadBalancer in download_manager_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+    <configuration name="TestFileManager in filemanager_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="fyer" />
-      <working_directory value="$PROJECT_DIR$/alg" />
+      <working_directory value="$PROJECT_DIR$/filemanager" />
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/Zumium/fyer/alg" />
-      <pattern value="^TestDownloadBalancer$" />
+      <package value="github.com/Zumium/fyer/filemanager" />
+      <pattern value="^TestFileManager$" />
     </configuration>
-    <configuration name="TestFragOperations in frag_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+    <configuration name="TestFileMetaOperations in file_meta_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="fyer" />
       <working_directory value="$PROJECT_DIR$/db/center" />
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/Zumium/fyer/db/center" />
-      <pattern value="^TestFragOperations$" />
+      <pattern value="^TestFileMetaOperations$" />
     </configuration>
     <configuration name="TestLogging in log_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="fyer" />
@@ -495,18 +510,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Go Test.TestLogging in log_test.go" />
-      <item index="1" class="java.lang.String" itemvalue="Go Test.TestFragOperations in frag_test.go" />
-      <item index="2" class="java.lang.String" itemvalue="Go Test.TestDownloadBalancer in download_manager_test.go" />
-      <item index="3" class="java.lang.String" itemvalue="Go Test.TestUploadFile in client_test.go" />
-      <item index="4" class="java.lang.String" itemvalue="Go Build.go build file_register.go" />
+      <item index="1" class="java.lang.String" itemvalue="Go Test.TestUploadFile in client_test.go" />
+      <item index="2" class="java.lang.String" itemvalue="Go Build.go build file_register.go" />
+      <item index="3" class="java.lang.String" itemvalue="Go Test.TestFileManager in filemanager_test.go" />
+      <item index="4" class="java.lang.String" itemvalue="Go Test.TestFileMetaOperations in file_meta_test.go" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Go Build.go build file_register.go" />
-        <item index="1" class="java.lang.String" itemvalue="Go Test.TestLogging in log_test.go" />
-        <item index="2" class="java.lang.String" itemvalue="Go Test.TestUploadFile in client_test.go" />
-        <item index="3" class="java.lang.String" itemvalue="Go Test.TestDownloadBalancer in download_manager_test.go" />
-        <item index="4" class="java.lang.String" itemvalue="Go Test.TestFragOperations in frag_test.go" />
+        <item index="0" class="java.lang.String" itemvalue="Go Test.TestFileMetaOperations in file_meta_test.go" />
+        <item index="1" class="java.lang.String" itemvalue="Go Test.TestFileManager in filemanager_test.go" />
+        <item index="2" class="java.lang.String" itemvalue="Go Build.go build file_register.go" />
+        <item index="3" class="java.lang.String" itemvalue="Go Test.TestLogging in log_test.go" />
+        <item index="4" class="java.lang.String" itemvalue="Go Test.TestUploadFile in client_test.go" />
       </list>
     </recent_temporary>
   </component>
@@ -553,7 +568,7 @@
       <workItem from="1514960240239" duration="14829000" />
       <workItem from="1515031110030" duration="14732000" />
       <workItem from="1515119877143" duration="5912000" />
-      <workItem from="1515135713449" duration="16106000" />
+      <workItem from="1515135713449" duration="23822000" />
     </task>
     <task id="LOCAL-00001" summary="modify RPC design, adjust peer database and implement dispatching algorithm">
       <created>1512564166004</created>
@@ -601,17 +616,17 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestDownloadBalancer_in_download_manager_test_go - 2018.01.05 at 14h 09m 18s.xml">
-      <configuration name="TestDownloadBalancer in download_manager_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestFileManager_in_filemanager_test_go - 2018.01.05 at 23h 25m 01s.xml">
+      <configuration name="TestFileManager in filemanager_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestDownloadBalancer_in_download_manager_test_go - 2018.01.05 at 14h 10m 23s.xml">
-      <configuration name="TestDownloadBalancer in download_manager_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestFileManager_in_filemanager_test_go - 2018.01.05 at 23h 25m 21s.xml">
+      <configuration name="TestFileManager in filemanager_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestDownloadBalancer_in_download_manager_test_go - 2018.01.05 at 14h 16m 54s.xml">
-      <configuration name="TestDownloadBalancer in download_manager_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestFileMetaOperations_in_file_meta_test_go - 2018.01.06 at 00h 21m 34s.xml">
+      <configuration name="TestFileMetaOperations in file_meta_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestLogging_in_log_test_go - 2018.01.03 at 16h 46m 33s.xml">
-      <configuration name="TestLogging in log_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestFileMetaOperations_in_file_meta_test_go - 2018.01.06 at 00h 27m 21s.xml">
+      <configuration name="TestFileMetaOperations in file_meta_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
     <history-entry file="TestLogging_in_log_test_go - 2018.01.03 at 16h 47m 22s.xml">
       <configuration name="TestLogging in log_test.go" configurationId="GoTestRunConfiguration" />
@@ -633,7 +648,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144621000" />
+    <option name="totallyTimeSpent" value="152337000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -645,8 +660,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1769" y="78" width="1523" height="884" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1685" y="99" width="1523" height="884" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -657,10 +671,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32572877" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32572877" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32572877" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21674544" sideWeight="0.49511003" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21674544" sideWeight="0.49511003" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282636" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -721,81 +735,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/peer/db.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/peer/stored_frags_ffjson.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fragmngr/interface.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="e#18#68#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fragmngr/simple_fs.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="121" column="49" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
-          <folding>
-            <element signature="e#18#140#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/center/frag.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="42" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-          <folding>
-            <element signature="e#16#109#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alg/frag_cutter.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="41" lean-forward="false" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/center/datamodel.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="41" lean-forward="false" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/peer/file_db.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="123" column="4" lean-forward="false" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/peer/stored_frags.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -838,14 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/cfg.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protos/center/center.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-779">
@@ -870,34 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/api.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/fyerwork/upload.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#18#147#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/fyerwork/download.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="995">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#18#379#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/peer/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="668">
@@ -916,26 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc/center/rpc.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#264#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc/fyerwork/rpc.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="e#18#227#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glide.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -948,24 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connectionmngr/connectionmngr.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding>
-            <element signature="e#24#189#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc/peer/rpc.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -996,16 +866,6 @@
           <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
           <folding>
             <element signature="e#14#237#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#185#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1054,16 +914,6 @@
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="e#13#29#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/center/file_meta_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="e#16#73#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1127,7 +977,7 @@
         <state relative-caret-position="154">
           <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
           <folding>
-            <element signature="e#14#225#0" expanded="true" />
+            <element signature="e#14#225#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1148,26 +998,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/peer/deploy.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1561">
-          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control/center/frag_distribution.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" column="64" lean-forward="false" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/center/file_register.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1921">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1177,6 +1011,182 @@
         <state relative-caret-position="153">
           <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile_center">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile_peer">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filemanager/filemanager_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="21" column="80" lean-forward="false" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
+          <folding>
+            <element signature="e#21#57#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filemanager/file_manager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/fyerwork/upload.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/fyerwork/rpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/center/rpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="22" column="50" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/peer/rpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="e#14#254#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/center/file_meta.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="184" column="29" lean-forward="false" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/center/file_meta_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/center/file_register.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-248">
+          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <folding>
+            <element signature="e#16#489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/peer/deploy.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1340">
+          <caret line="87" column="30" lean-forward="false" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
+          <folding>
+            <element signature="e#14#445#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/peer/file_db.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connectionmngr/connectionmngr.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="58" column="54" lean-forward="true" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/cfg.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/api.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <folding>
+            <element signature="e#13#49#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="75" column="35" lean-forward="true" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+          <folding>
+            <element signature="e#14#185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/upload/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/fyerwork/download.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="125" column="23" lean-forward="false" selection-start-line="125" selection-start-column="23" selection-end-line="125" selection-end-column="23" />
+          <folding>
+            <element signature="e#18#357#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/download/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+          <folding>
+            <element signature="e#14#127#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

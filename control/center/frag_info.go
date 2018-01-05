@@ -2,10 +2,10 @@ package center
 
 import (
 	"encoding/json"
+	"fmt"
 	db_center "github.com/Zumium/fyer/db/center"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	"golang.org/x/net/context"
-	"fmt"
 )
 
 type FragInfoController struct{}

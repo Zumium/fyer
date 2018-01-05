@@ -7,13 +7,13 @@ import (
 	"github.com/Zumium/fyer/connectionmngr"
 	db_center "github.com/Zumium/fyer/db/center"
 	//"github.com/Zumium/fyer/merkle"
+	"fmt"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
 	util_center "github.com/Zumium/fyer/util/center"
 	google_protobuf "github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
 	"time"
-	"fmt"
 )
 
 //FileRegisterStoreFileInfo is used to store file info into database
@@ -96,7 +96,7 @@ func (fr *FileRegisterController) makeDeploys(frags []common.Frag, dispatches []
 			}
 			fmt.Printf("peer %s address: %s\n", peerID, address)
 
-			conn, err := connectionmngr.ConnectTo(address)
+			conn, err := connectionmngr.ConnectToWithDefaultPort(address)
 			if err != nil {
 				return err
 			}

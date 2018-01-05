@@ -1,6 +1,5 @@
 FROM golang:alpine
 VOLUME /fyer/fragBase
-ENV FYER_LOG_LEVEL INFO
 ENV FYER_DB_FILE /fyer/fyer.db
 ENV FYER_FRAG_BASE /fyer/fragBase
 ENV FYER_PORT 4102

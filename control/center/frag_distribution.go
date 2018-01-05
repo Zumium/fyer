@@ -1,10 +1,10 @@
 package center
 
 import (
+	"fmt"
 	db_center "github.com/Zumium/fyer/db/center"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	"golang.org/x/net/context"
-	"fmt"
 )
 
 type FragDistributionController struct{}

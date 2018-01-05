@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Zumium/fyer/cfg"
 	db_peer "github.com/Zumium/fyer/db/peer"
 	"github.com/Zumium/fyer/fragmngr"
 	"github.com/Zumium/fyer/peeregister"
 	rpc_peer "github.com/Zumium/fyer/rpc/peer"
 	util_bin "github.com/Zumium/fyer/util/bin"
-	"fmt"
 )
 
 func main() {

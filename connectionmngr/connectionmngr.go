@@ -25,6 +25,8 @@ func ConnectTo(destAddr string) (*Connection, error) {
 	serialAccess.Lock()
 	defer serialAccess.Unlock()
 
+	fmt.Printf("Establishing connection to %s\n", destAddr)
+
 	conn, exist := connectionPool[destAddr]
 	if exist {
 		conn.refCount++
@@ -55,6 +57,10 @@ func ConnectTo(destAddr string) (*Connection, error) {
 //ConnectToCenter is a helper function to conveniently establish a connection towards center
 func ConnectToCenter() (*Connection, error) {
 	return ConnectTo(fmt.Sprintf("%s:%d", cfg.CenterAddress(), cfg.Port()))
+}
+
+func ConnectToWithDefaultPort(addr string) (*Connection, error) {
+	return ConnectTo(fmt.Sprintf("%s:%d", addr, cfg.Port()))
 }
 
 //Close discount the reference counter by 1 and closes the underlying connection once the reference counter equals 0

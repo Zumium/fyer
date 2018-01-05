@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/spf13/viper"
+	"time"
 )
 
 func TestFileMetaOperations(t *testing.T) {
@@ -18,7 +19,7 @@ func TestFileMetaOperations(t *testing.T) {
 	testHash := []byte("hello world")
 
 	fmeta, _ := ToFileMeta("test")
-	if err := fmeta.Edit().SetFragCount(3).SetHash(testHash).SetSize(254).Done(); err != nil {
+	if err := fmeta.Edit().SetFragCount(3).SetHash(testHash).SetSize(254).SetUploadTime(time.Now()).Done(); err != nil {
 		t.Fatal(err)
 	}
 	defer fmeta.Remove()
@@ -35,5 +36,9 @@ func TestFileMetaOperations(t *testing.T) {
 	size := fmeta2.Size()
 	if size != 254 {
 		t.Fatalf("size mismatching: is %d, should be %d\n", size, 254)
+	}
+	uploadTime:=fmeta2.UploadTime()
+	if uploadTime.IsZero() {
+		t.Fatal("upload time is zero")
 	}
 }

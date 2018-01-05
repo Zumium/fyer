@@ -82,7 +82,7 @@ func (d *DeployController) addDBRecord(in *pb_peer.DeployRequest) error {
 		return fileDB.Err()
 	}
 	if exist {
-		fmt.Printf("file %s doesnt exist, create a new record\n", in.GetName())
+		fmt.Printf("file record %s already exists\n", in.GetName())
 		storedFrags := fileDB.StoredFrags()
 		if fileDB.Err() != nil {
 			return fileDB.Err()
@@ -92,7 +92,7 @@ func (d *DeployController) addDBRecord(in *pb_peer.DeployRequest) error {
 			return err
 		}
 	} else {
-		fmt.Printf("file %s already exists\n", in.GetName())
+		fmt.Printf("file record %s doesnt exist, create a new record\n", in.GetName())
 		if err := fileDB.Edit().SetStoredFrags(&db_peer.StoredFrags{Frags: []common.Frag{common.MustUnmarshalJsonToFrag(in.GetFrag())}}).Done(); err != nil {
 			return err
 		}

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Zumium/fyer/alg"
-	"github.com/Zumium/fyer/cfg"
 	"github.com/Zumium/fyer/common"
 	"github.com/Zumium/fyer/connectionmngr"
 	pb_center "github.com/Zumium/fyer/protos/center"
@@ -13,6 +12,7 @@ import (
 	"golang.org/x/net/context"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 var defaultDownloadController = new(DownloadController)
@@ -81,15 +81,20 @@ func (dc *DownloadController) getFragDistribution(name string) ([][]string, erro
 }
 
 func (dc *DownloadController) downloadFragAndSave(ctx context.Context, name string, frag common.Frag, peer string, file *os.File) {
+	wg := ctx.Value("wait_group").(*sync.WaitGroup)
+	defer wg.Done()
+
 	addr, err := util_peer.ResolvePeerIDByCenter(peer)
 	if err != nil {
 		//TODO: Deal with error
+		fmt.Sprint(os.Stderr, "Error happened when downloading: %s", err)
 		return
 	}
 
-	conn, err := connectionmngr.ConnectTo(fmt.Sprintf("%s:%d", addr, cfg.Port()))
+	conn, err := connectionmngr.ConnectToWithDefaultPort(addr)
 	if err != nil {
 		//TODO: Deal with error
+		fmt.Sprint(os.Stderr, "Error happened when downloading: %s", err)
 		return
 	}
 	defer conn.Close()
@@ -98,6 +103,7 @@ func (dc *DownloadController) downloadFragAndSave(ctx context.Context, name stri
 	resp, err := fyerCenterClient.Fetch(context.TODO(), &pb_peer.FetchRequest{name, frag.Index})
 	if err != nil {
 		//TODO: Deal with error
+		fmt.Sprint(os.Stderr, "Error happened when downloading: %s", err)
 		return
 	}
 
@@ -119,6 +125,9 @@ func (dc *DownloadController) Download(name string, storePath string) error {
 	//}
 	//download frag info
 	fragInfo, err := dc.getFragInfo(name)
+	if err != nil {
+		return err
+	}
 	//download frag distribution table
 	fragDistribution, err := dc.getFragDistribution(name)
 	if err != nil {
@@ -126,10 +135,16 @@ func (dc *DownloadController) Download(name string, storePath string) error {
 	}
 	//run download balancer algorithm
 	downloadSources := alg.NewDownloadBalancer(fragDistribution).Result()
+	//create context that to be used
+	var wg sync.WaitGroup
+	wg.Add(len(downloadSources))
+	ctx:=context.WithValue(context.Background(), "wait_group", &wg)
 	//make fetch requests
 	for i, src := range downloadSources {
-		go dc.downloadFragAndSave(context.TODO(), name, fragInfo[i], src, f)
+		go dc.downloadFragAndSave(ctx, name, fragInfo[i], src, f)
 	}
+	//wait to finish
+	wg.Wait()
 	//save to file
 	return nil
 }

@@ -2,12 +2,12 @@ package peer
 
 import (
 	"errors"
+	"fmt"
 	"github.com/Zumium/fyer/common"
 	db_peer "github.com/Zumium/fyer/db/peer"
 	"github.com/Zumium/fyer/fragmngr"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
 	"golang.org/x/net/context"
-	"fmt"
 )
 
 var (
@@ -46,7 +46,7 @@ func (ftch *FetchController) readLocalFrag(in *pb_peer.FetchRequest) common.Frag
 
 func (ftch *FetchController) Fetch(ctx context.Context, in *pb_peer.FetchRequest) (*pb_peer.FetchResponse, error) {
 	//check whether file and frag exist
-	fmt.Printf("New fetch request: %s\n",in.String())
+	fmt.Printf("New fetch request: %s\n", in.String())
 	fmt.Println(in.String())
 	if err := ftch.checkFileAndFragExist(in); err != nil {
 		return nil, err

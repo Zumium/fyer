@@ -8,18 +8,12 @@ import (
 )
 
 var localServeAddr string
-var messageSize = 128 * 1024 * 1024
 
 //------------------------------ Configuration --------------------------
 
 //export SetLocalServeAddress
 func SetLocalServeAddress(laddr string) {
 	localServeAddr = laddr
-}
-
-//export SetMessageSize
-func SetMessageSize(size int) {
-	messageSize = size
 }
 
 //-----------------------------------------------------------------------
@@ -44,16 +38,16 @@ func UnregisterFile(name string) bool {
 //----------------------------- Fyerwork RPC Server ---------------------
 
 //export StartFyerworkServer
-func StartFyerworkServer(port int) int {
-	if err := rpc_fyerwork.Start(port, messageSize); err != nil {
+func StartFyerworkServer() int {
+	if err := rpc_fyerwork.Start(); err != nil {
 		return -1
 	}
 	return 0
 }
 
 //export StartFyerworkServerInBackground
-func StartFyerworkServerInBackground(port int) {
-	rpc_fyerwork.StartInBackground(port, messageSize)
+func StartFyerworkServerInBackground() {
+	rpc_fyerwork.StartInBackground()
 }
 
 //export WaitFyerworkServer
