@@ -46,7 +46,7 @@ func (ftch *FetchController) readLocalFrag(in *pb_peer.FetchRequest) common.Frag
 
 func (ftch *FetchController) Fetch(ctx context.Context, in *pb_peer.FetchRequest) (*pb_peer.FetchResponse, error) {
 	//check whether file and frag exist
-	fmt.Println("New fetch request")
+	fmt.Printf("New fetch request: %s\n",in.String())
 	fmt.Println(in.String())
 	if err := ftch.checkFileAndFragExist(in); err != nil {
 		return nil, err

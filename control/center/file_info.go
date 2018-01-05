@@ -4,6 +4,7 @@ import (
 	db_center "github.com/Zumium/fyer/db/center"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	"golang.org/x/net/context"
+	"fmt"
 )
 
 //FileInfoController handles the FileInfoController RPC process
@@ -11,6 +12,8 @@ type FileInfoController struct{}
 
 //handles GRPC request
 func (finfo *FileInfoController) FileInfo(ctx context.Context, in *pb_center.FileInfoRequest) (*pb_center.FileInfoResponse, error) {
+	fmt.Printf("new file info request: %s\n", in.String())
+
 	dbHandler, err := db_center.ToFileMeta(in.GetName())
 	if err != nil {
 		return nil, err

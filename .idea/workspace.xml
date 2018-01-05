@@ -2,57 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43761aa2-e95d-47f5-905e-aab5955e2bce" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/alg/download_balancer.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/alg/download_balancer_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/client/main.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common/frag.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/control/center/frag_distribution.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/control/center/frag_info.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/control/fyerwork/download.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/control/fyerwork/fetch.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/control/fyerwork/upload.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/db/center/frag_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/filemanager/file_manager.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/rpc/fyerwork/rpc.go" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile_center" afterPath="$PROJECT_DIR$/Dockerfile_center" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile_peer" afterPath="$PROJECT_DIR$/Dockerfile_peer" />
-      <change beforePath="$PROJECT_DIR$/alg/dispatch.go" afterPath="$PROJECT_DIR$/alg/dispatch.go" />
-      <change beforePath="$PROJECT_DIR$/alg/frag_cutter.go" afterPath="$PROJECT_DIR$/alg/frag_cutter.go" />
-      <change beforePath="$PROJECT_DIR$/center/main.go" afterPath="$PROJECT_DIR$/center/main.go" />
-      <change beforePath="$PROJECT_DIR$/cfg/api.go" afterPath="$PROJECT_DIR$/cfg/api.go" />
-      <change beforePath="$PROJECT_DIR$/common/peer/frag.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/common/peer/frag_ffjson.go" afterPath="$PROJECT_DIR$/common/frag_ffjson.go" />
-      <change beforePath="$PROJECT_DIR$/connectionmngr/connectionmngr.go" afterPath="$PROJECT_DIR$/connectionmngr/connectionmngr.go" />
       <change beforePath="$PROJECT_DIR$/control/center/file_info.go" afterPath="$PROJECT_DIR$/control/center/file_info.go" />
-      <change beforePath="$PROJECT_DIR$/control/center/file_register.go" afterPath="$PROJECT_DIR$/control/center/file_register.go" />
-      <change beforePath="$PROJECT_DIR$/control/peer/deploy.go" afterPath="$PROJECT_DIR$/control/peer/deploy.go" />
+      <change beforePath="$PROJECT_DIR$/control/center/frag_distribution.go" afterPath="$PROJECT_DIR$/control/center/frag_distribution.go" />
+      <change beforePath="$PROJECT_DIR$/control/center/frag_info.go" afterPath="$PROJECT_DIR$/control/center/frag_info.go" />
+      <change beforePath="$PROJECT_DIR$/control/center/peer_info.go" afterPath="$PROJECT_DIR$/control/center/peer_info.go" />
+      <change beforePath="$PROJECT_DIR$/control/fyerwork/fetch.go" afterPath="$PROJECT_DIR$/control/fyerwork/fetch.go" />
       <change beforePath="$PROJECT_DIR$/control/peer/fetch.go" afterPath="$PROJECT_DIR$/control/peer/fetch.go" />
-      <change beforePath="$PROJECT_DIR$/db/center/datamodel.go" afterPath="$PROJECT_DIR$/db/center/datamodel.go" />
-      <change beforePath="$PROJECT_DIR$/db/center/file_meta.go" afterPath="$PROJECT_DIR$/db/center/file_meta.go" />
-      <change beforePath="$PROJECT_DIR$/db/center/frag.go" afterPath="$PROJECT_DIR$/db/center/frag.go" />
-      <change beforePath="$PROJECT_DIR$/db/peer/file_db_test.go" afterPath="$PROJECT_DIR$/db/peer/file_db_test.go" />
-      <change beforePath="$PROJECT_DIR$/db/peer/stored_frags.go" afterPath="$PROJECT_DIR$/db/peer/stored_frags.go" />
-      <change beforePath="$PROJECT_DIR$/db/peer/stored_frags_ffjson.go" afterPath="$PROJECT_DIR$/db/peer/stored_frags_ffjson.go" />
-      <change beforePath="$PROJECT_DIR$/fragmngr/frag_test.go" afterPath="$PROJECT_DIR$/fragmngr/frag_test.go" />
-      <change beforePath="$PROJECT_DIR$/fragmngr/interface.go" afterPath="$PROJECT_DIR$/fragmngr/interface.go" />
-      <change beforePath="$PROJECT_DIR$/fragmngr/simple_fs.go" afterPath="$PROJECT_DIR$/fragmngr/simple_fs.go" />
-      <change beforePath="$PROJECT_DIR$/glide.lock" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/glide.yaml" afterPath="$PROJECT_DIR$/glide.yaml" />
-      <change beforePath="$PROJECT_DIR$/log/log.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/log/log_test.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/merkle/merkle.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/merkle/merkle_test.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/peer/main.go" afterPath="$PROJECT_DIR$/peer/main.go" />
-      <change beforePath="$PROJECT_DIR$/protos/center/center.pb.go" afterPath="$PROJECT_DIR$/protos/center/center.pb.go" />
-      <change beforePath="$PROJECT_DIR$/protos/center/center.proto" afterPath="$PROJECT_DIR$/protos/center/center.proto" />
-      <change beforePath="$PROJECT_DIR$/protos/peer/frag.pb.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/protos/peer/frag.proto" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/protos/peer/peer.pb.go" afterPath="$PROJECT_DIR$/protos/peer/peer.pb.go" />
-      <change beforePath="$PROJECT_DIR$/protos/peer/peer.proto" afterPath="$PROJECT_DIR$/protos/peer/peer.proto" />
-      <change beforePath="$PROJECT_DIR$/rpc/center/init.go" afterPath="$PROJECT_DIR$/rpc/center/rpc.go" />
-      <change beforePath="$PROJECT_DIR$/rpc/peer/init.go" afterPath="$PROJECT_DIR$/rpc/peer/rpc.go" />
-      <change beforePath="$PROJECT_DIR$/util/peer/resolve_peer_id_by_center.go" afterPath="$PROJECT_DIR$/util/peer/resolve_peer_id_by_center.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,7 +21,28 @@
     <favorites_list name="fyer" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="file_register.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/control/center/file_register.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1921">
+              <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="file_info.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/control/center/file_info.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -97,13 +73,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/center/config.yaml" />
         <option value="$PROJECT_DIR$/peeregister/peeregister.go" />
         <option value="$PROJECT_DIR$/cfg/cfg.go" />
         <option value="$PROJECT_DIR$/log/log.go" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/db/center/file_meta.go" />
-        <option value="$PROJECT_DIR$/control/center/file_info.go" />
         <option value="$PROJECT_DIR$/Dockerfile_center" />
         <option value="$PROJECT_DIR$/Dockerfile_peer" />
         <option value="$PROJECT_DIR$/protos/peer/frag.proto" />
@@ -113,11 +87,9 @@
         <option value="$PROJECT_DIR$/filemanager/file_manager.go" />
         <option value="$PROJECT_DIR$/fyerwork/rpc.go" />
         <option value="$PROJECT_DIR$/rpc/peer/rpc.go" />
-        <option value="$PROJECT_DIR$/control/fyerwork/fetch.go" />
         <option value="$PROJECT_DIR$/alg/dispatch.go" />
         <option value="$PROJECT_DIR$/alg/download_manager_test.go" />
         <option value="$PROJECT_DIR$/alg/download_balancer.go" />
-        <option value="$PROJECT_DIR$/control/center/frag_distribution.go" />
         <option value="$PROJECT_DIR$/protos/common/frag.proto" />
         <option value="$PROJECT_DIR$/protos/peer/peer.proto" />
         <option value="$PROJECT_DIR$/protos/center/center.proto" />
@@ -130,7 +102,6 @@
         <option value="$PROJECT_DIR$/alg/frag_cutter.go" />
         <option value="$PROJECT_DIR$/common/frag.go" />
         <option value="$PROJECT_DIR$/rpc/center/rpc.go" />
-        <option value="$PROJECT_DIR$/control/center/frag_info.go" />
         <option value="$PROJECT_DIR$/connectionmngr/connectionmngr.go" />
         <option value="$PROJECT_DIR$/control/fyerwork/download.go" />
         <option value="$PROJECT_DIR$/util/peer/resolve_peer_id_by_center.go" />
@@ -144,10 +115,15 @@
         <option value="$PROJECT_DIR$/cfg/api.go" />
         <option value="$PROJECT_DIR$/control/center/file_register.go" />
         <option value="$PROJECT_DIR$/control/peer/deploy.go" />
-        <option value="$PROJECT_DIR$/control/peer/fetch.go" />
         <option value="$PROJECT_DIR$/db/center/frag_test.go" />
         <option value="$PROJECT_DIR$/db/peer/file_db_test.go" />
         <option value="$PROJECT_DIR$/fragmngr/frag_test.go" />
+        <option value="$PROJECT_DIR$/control/peer/fetch.go" />
+        <option value="$PROJECT_DIR$/control/fyerwork/fetch.go" />
+        <option value="$PROJECT_DIR$/control/center/peer_info.go" />
+        <option value="$PROJECT_DIR$/control/center/frag_info.go" />
+        <option value="$PROJECT_DIR$/control/center/frag_distribution.go" />
+        <option value="$PROJECT_DIR$/control/center/file_info.go" />
       </list>
     </option>
   </component>
@@ -577,7 +553,7 @@
       <workItem from="1514960240239" duration="14829000" />
       <workItem from="1515031110030" duration="14732000" />
       <workItem from="1515119877143" duration="5912000" />
-      <workItem from="1515135713449" duration="14560000" />
+      <workItem from="1515135713449" duration="16106000" />
     </task>
     <task id="LOCAL-00001" summary="modify RPC design, adjust peer database and implement dispatching algorithm">
       <created>1512564166004</created>
@@ -657,7 +633,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143075000" />
+    <option name="totallyTimeSpent" value="144621000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -670,6 +646,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1769" y="78" width="1523" height="884" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -680,7 +657,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32572877" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32572877" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32572877" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21674544" sideWeight="0.49511003" order="0" side_tool="false" content_ui="combo" />
@@ -901,38 +878,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/peer/fetch.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/peer/deploy.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control/fyerwork/upload.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
           <folding>
             <element signature="e#18#147#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/fyerwork/fetch.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="18" column="39" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding>
-            <element signature="e#18#154#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -947,60 +898,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/center/peer_info.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="e#16#150#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/center/frag_info.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <element signature="e#16#167#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/center/frag_distribution.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding>
-            <element signature="e#16#150#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/center/file_register.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/peer/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="668">
           <caret line="41" column="40" lean-forward="false" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
           <folding>
             <element signature="e#14#264#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/center/file_info.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="e#16#150#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1208,6 +1111,72 @@
           <folding>
             <element signature="e#21#144#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/fyerwork/fetch.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/peer/fetch.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
+          <folding>
+            <element signature="e#14#225#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/center/peer_info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="56" lean-forward="false" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/center/frag_info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="56" lean-forward="false" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/peer/deploy.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1561">
+          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/center/frag_distribution.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="64" lean-forward="false" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/center/file_register.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1921">
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/center/file_info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>

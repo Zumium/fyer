@@ -5,11 +5,14 @@ import (
 	pb_fyerwork "github.com/Zumium/fyer/protos/fyerwork"
 	"golang.org/x/net/context"
 	"io"
+	"fmt"
 )
 
 type FetchController struct{}
 
 func (f *FetchController) Fetch(ctx context.Context, in *pb_fyerwork.FetchRequest) (*pb_fyerwork.FetchResponse, error) {
+	fmt.Printf("new fetch request: %s\n",in.String())
+
 	file, err := filemanager.Open(in.GetName())
 	if err != nil {
 		return nil, err
