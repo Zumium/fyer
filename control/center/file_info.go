@@ -4,6 +4,7 @@ import (
 	"fmt"
 	db_center "github.com/Zumium/fyer/db/center"
 	pb_center "github.com/Zumium/fyer/protos/center"
+	google_protobuf_timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	"golang.org/x/net/context"
 )
 
@@ -19,9 +20,10 @@ func (finfo *FileInfoController) FileInfo(ctx context.Context, in *pb_center.Fil
 		return nil, err
 	}
 	finfoResp := &pb_center.FileInfoResponse{
-		Size:      dbHandler.Size(),
-		Hash:      dbHandler.Hash(),
-		FragCount: dbHandler.FragCount(),
+		Size:       dbHandler.Size(),
+		Hash:       dbHandler.Hash(),
+		FragCount:  dbHandler.FragCount(),
+		UploadTime: &google_protobuf_timestamp.Timestamp{Seconds: dbHandler.UploadTime().Unix()},
 		//MerkleTree: dbHandler.RawMerkleTree(),
 	}
 	if err := dbHandler.Err(); err != nil {

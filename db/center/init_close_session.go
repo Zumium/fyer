@@ -7,21 +7,27 @@ import (
 
 var (
 	session *mgo.Session
+	db *mgo.Database
+	fileMetaCollection, fragCollection, peerCollection *mgo.Collection
 )
 
-func mgoSession() *mgo.Session {
-	return session
-}
+//------------------------------------------------------------------------------
 
-func mgoFyerDB() *mgo.Database {
-	return mgoSession().DB("fyer")
+func doCreates() {
+	db = session.DB("fyer")
+	fileMetaCollection = db.C(mgoFileMetaCollection)
+	fragCollection = db.C(mgoFragCollection)
+	peerCollection = db.C(mgoPeerCollection)
 }
 
 func ensureIndexes() (err error) {
-	if err = session.DB("fyer").C(mgoFileMetaCollection).EnsureIndexKey("name"); err != nil {
+	if err = fileMetaCollection.EnsureIndexKey("name"); err != nil {
 		return
 	}
-	if err = session.DB("fyer").C(mgoFragCollection).EnsureIndexKey("name"); err != nil {
+	if err = fragCollection.EnsureIndexKey("name"); err != nil {
+		return
+	}
+	if err = peerCollection.EnsureIndexKey("peer_id");err!=nil{
 		return
 	}
 	return
@@ -33,6 +39,7 @@ func Init() (err error) {
 	if err != nil {
 		return
 	}
+	doCreates()
 	if err = ensureIndexes(); err != nil {
 		return
 	}
@@ -40,7 +47,7 @@ func Init() (err error) {
 }
 
 //Close closes the mongo session
-func Close() (err error) {
+func Close() error {
 	session.Close()
-	return
+	return nil
 }

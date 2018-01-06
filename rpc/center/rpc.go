@@ -16,6 +16,7 @@ type rpcImpl struct {
 	control_center.FileInfoController
 	control_center.FragDistributionController
 	control_center.FragInfoController
+	control_center.FilesController
 }
 
 //Start starts the center's RPC service

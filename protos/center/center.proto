@@ -5,6 +5,7 @@ option go_package = "center";
 option java_package = "cn.zumium.fyer.proto.center";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 message RegisterRequest {
     string name = 1;
@@ -38,6 +39,10 @@ message RegisterRequest {
 //     string login_id = 3;
 // }
 
+message FilesResponse {
+    repeated string files = 1;
+}
+
 message FileInfoRequest {
     string name = 1;
 }
@@ -54,6 +59,7 @@ message FileInfoResponse {
     uint64 size = 1;
     bytes hash = 2;
     uint64 frag_count = 3;
+    google.protobuf.Timestamp upload_time = 4;
 //    bytes merkle_tree = 4;
 }
 
@@ -95,6 +101,7 @@ message FragDistributionResponse {
 service FyerCenter {
     rpc Register (RegisterRequest) returns (google.protobuf.Empty);
     // rpc RegisterPeer (RegisterPeerRequest) returns (google.protobuf.Empty);
+    rpc Files (google.protobuf.Empty) returns (FilesResponse);
     rpc FileInfo (FileInfoRequest) returns (FileInfoResponse);
     rpc PeerInfo (PeerInfoRequest) returns (PeerInfoResponse);
     rpc FragInfo (FragInfoRequest) returns (FragInfoResponse);

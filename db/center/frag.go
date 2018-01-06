@@ -15,7 +15,7 @@ const (
 
 //fragC returns the collection of file frag infos
 func fragC() *mgo.Collection {
-	return mgoFyerDB().C(mgoFragCollection)
+	return fragCollection
 }
 
 //Frag is file fragment database handler

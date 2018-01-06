@@ -6,7 +6,7 @@ import (
 )
 
 func peerC() *mgo.Collection {
-	return mgoFyerDB().C(mgoPeerCollection)
+	return peerCollection
 }
 
 type peerRecordMode uint8

@@ -10,7 +10,7 @@ import (
 
 //fileMetaC returns the file meta collection
 func fileMetaC() *mgo.Collection {
-	return mgoFyerDB().C(mgoFileMetaCollection)
+	return fileMetaCollection
 }
 
 type fileMetaRecordMode uint8
@@ -27,6 +27,23 @@ type FileMeta struct {
 	mode fileMetaRecordMode
 	doc  mgoFileMeta
 	err  error
+}
+
+//Files returns all files' names from db
+func Files() ([]string, error) {
+	var results []struct {
+		Name string `bson:"name"`
+	}
+	if err := fileMetaC().Find(nil).Select(bson.M{"name": 1, "_id": 0}).All(&results); err != nil {
+		return nil, err
+	}
+
+	names := make([]string, 0, len(results))
+	for _, r := range results {
+		names = append(names, r.Name)
+	}
+
+	return names, nil
 }
 
 //ToFileMeta creates a new FileMeta to apply furthur db operaions
