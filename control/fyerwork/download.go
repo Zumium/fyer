@@ -138,7 +138,7 @@ func (dc *DownloadController) Download(name string, storePath string) error {
 	//create context that to be used
 	var wg sync.WaitGroup
 	wg.Add(len(downloadSources))
-	ctx:=context.WithValue(context.Background(), "wait_group", &wg)
+	ctx := context.WithValue(context.Background(), "wait_group", &wg)
 	//make fetch requests
 	for i, src := range downloadSources {
 		go dc.downloadFragAndSave(ctx, name, fragInfo[i], src, f)

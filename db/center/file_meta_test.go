@@ -37,7 +37,7 @@ func TestFileMetaOperations(t *testing.T) {
 	if size != 254 {
 		t.Fatalf("size mismatching: is %d, should be %d\n", size, 254)
 	}
-	uploadTime:=fmeta2.UploadTime()
+	uploadTime := fmeta2.UploadTime()
 	if uploadTime.IsZero() {
 		t.Fatal("upload time is zero")
 	}

@@ -5,15 +5,31 @@ import (
 	control_fyerwork "github.com/Zumium/fyer/control/fyerwork"
 	"github.com/Zumium/fyer/filemanager"
 	rpc_fyerwork "github.com/Zumium/fyer/rpc/fyerwork"
+	"github.com/spf13/viper"
 )
-
-var localServeAddr string
 
 //------------------------------ Configuration --------------------------
 
+//REQUIRED
 //export SetLocalServeAddress
 func SetLocalServeAddress(laddr string) {
-	localServeAddr = laddr
+	viper.Set("local_serve_address", laddr)
+}
+
+//REQUIRED
+//export SetCenterAddress
+func SetCenterAddress(addr string) {
+	viper.Set("center_adddress", addr)
+}
+
+//export SetPort
+func SetPort(port int) {
+	viper.Set("port", port)
+}
+
+//export SetMaxSendRecvMessageSize
+func SetMaxSendRecvMessageSize(size int) {
+	viper.Set("max_send_recv_msg_size", size)
 }
 
 //-----------------------------------------------------------------------
@@ -61,7 +77,7 @@ func WaitFyerworkServer() {
 
 //export UploadFile
 func UploadFile(name string, size uint64, hash []byte) int {
-	if err := control_fyerwork.UploadFile(name, size, hash, localServeAddr); err != nil {
+	if err := control_fyerwork.UploadFile(name, size, hash, viper.GetString("local_serve_address")); err != nil {
 		return -1
 	}
 	return 0
@@ -80,3 +96,14 @@ func DownloadFile(name string, storePath string) int {
 }
 
 func main() {}
+
+//-----------------------------------------------------------------------
+
+//---------------------------- Initializing -----------------------------
+
+func init() {
+	viper.Set("port", 4201)
+	viper.Set("max_send_recv_msg_size", 128*1024*1024)
+}
+
+//-----------------------------------------------------------------------
