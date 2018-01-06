@@ -3,7 +3,16 @@ package main
 /*
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
+
 typedef char* char_ptr;
+
+typedef struct {
+	uint64_t size;
+	unsigned char hash[16];
+	uint64_t frag_count;
+	int64_t upload_time;
+} file_info;
 
 void set_c_str_array(char *array[], int index, char *str);
 */
@@ -93,12 +102,34 @@ func Files(buf ***C.char, bufLen *C.int) C.int {
 		return -1
 	}
 
-	*buf = (**C.char)(C.calloc(C.size_t(len(names)), C.sizeof_char_ptr))
+	l := len(names)
+	*buf = (**C.char)(C.calloc(C.size_t(l), C.sizeof_char_ptr))
+	*bufLen = C.int(l)
 	for i, name := range names {
 		C.set_c_str_array(*buf, C.int(i), C.CString(name))
 	}
 
 	return 0
+}
+
+//export FileInfo
+func FileInfo(name *C.char, finfo *C.file_info) C.int {
+	size,hash,fragCount,uploadTime,err:=control_fyerwork.FileInfo(C.GoString(name))
+	if err != nil {
+		return -1
+	}
+
+	finfo.size = C.uint64_t(size)
+
+	cHash := C.CBytes(hash)
+	defer C.free(cHash)
+	C.memcpy(unsafe.Pointer(&finfo.hash[0]), cHash, 16)
+
+	finfo.frag_count = C.uint64_t(fragCount)
+
+	finfo.upload_time = C.int64_t(uploadTime.Unix())
+
+	return 0;
 }
 
 //-----------------------------------------------------------------------
