@@ -17,8 +17,8 @@ type rpcImpl struct {
 }
 
 func Start() error {
-	fmt.Printf("RPC listening on port %d\n", cfg.Port())
-	lis, err := kcp.ListenWithOptions(fmt.Sprintf("[%s]:%d", "::", cfg.Port()), nil, 10, 3)
+	fmt.Printf("RPC listening on port %d\n", cfg.ClientPort())
+	lis, err := kcp.ListenWithOptions(fmt.Sprintf("[%s]:%d", "::", cfg.ClientPort()), nil, 10, 3)
 	if err != nil {
 		return err
 	}

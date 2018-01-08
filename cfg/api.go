@@ -54,6 +54,11 @@ func Replica() int {
 	return viper.GetInt("replica")
 }
 
+//ClientPort returns the port where fyerwork server is listening
+func ClientPort() int {
+	return viper.GetInt("client_port")
+}
+
 //func LogLevel() logging.Level {
 //	switch viper.GetString("log_level") {
 //	case "DEBUG":

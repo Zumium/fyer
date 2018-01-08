@@ -52,6 +52,11 @@ func SetMaxSendRecvMessageSize(size C.int) {
 	viper.Set("max_send_recv_msg_size", int(size))
 }
 
+//export SetClientPort
+func SetClientPort(clientPort C.int) {
+	viper.Set("client_port", int(clientPort))
+}
+
 //-----------------------------------------------------------------------
 
 //------------------------------ File Management ------------------------
@@ -167,6 +172,7 @@ func main() {}
 
 func init() {
 	viper.Set("port", 4102)
+	viper.Set("client_port", 4104)
 	viper.Set("max_send_recv_msg_size", 128*1024*1024)
 }
 

@@ -10,12 +10,14 @@ import (
 
 var defaultUploadController = new(UploadController)
 
+//NOTICE: laddr is only the IP part, not including the port number
 func UploadFile(name string, size uint64, hash []byte, laddr string) error {
-	return defaultUploadController.Upload(name, size, hash, fmt.Sprintf("%s:%d", laddr, cfg.Port()))
+	return defaultUploadController.Upload(name, size, hash, fmt.Sprintf("%s:%d", laddr, cfg.ClientPort()))
 }
 
 type UploadController struct{}
 
+//NOTICE: laddr contains both the IP part and the port number part
 func (controller *UploadController) Upload(name string, size uint64, hash []byte, laddr string) error {
 	conn, err := connectionmngr.ConnectToCenter()
 	if err != nil {
