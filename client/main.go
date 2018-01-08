@@ -1,9 +1,12 @@
 package main
 
 /*
+#cgo CFLAGS: -std=c11
+
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <time.h>
 
 typedef char* char_ptr;
 
@@ -11,7 +14,7 @@ typedef struct {
 	uint64_t size;
 	unsigned char hash[16];
 	uint64_t frag_count;
-	int64_t upload_time;
+	time_t upload_time;
 } file_info;
 
 void set_c_str_array(char *array[], int index, char *str);
@@ -36,7 +39,7 @@ func SetLocalServeAddress(laddr *C.char) {
 //REQUIRED
 //export SetCenterAddress
 func SetCenterAddress(addr *C.char) {
-	viper.Set("center_adddress", C.GoString(addr))
+	viper.Set("center_address", C.GoString(addr))
 }
 
 //export SetPort
@@ -114,7 +117,7 @@ func Files(buf ***C.char, bufLen *C.int) C.int {
 
 //export FileInfo
 func FileInfo(name *C.char, finfo *C.file_info) C.int {
-	size,hash,fragCount,uploadTime,err:=control_fyerwork.FileInfo(C.GoString(name))
+	size, hash, fragCount, uploadTime, err := control_fyerwork.FileInfo(C.GoString(name))
 	if err != nil {
 		return -1
 	}
@@ -127,9 +130,9 @@ func FileInfo(name *C.char, finfo *C.file_info) C.int {
 
 	finfo.frag_count = C.uint64_t(fragCount)
 
-	finfo.upload_time = C.int64_t(uploadTime.Unix())
+	finfo.upload_time = C.time_t(uploadTime.Unix())
 
-	return 0;
+	return 0
 }
 
 //-----------------------------------------------------------------------
@@ -137,8 +140,8 @@ func FileInfo(name *C.char, finfo *C.file_info) C.int {
 //----------------------------- Upload File -----------------------------
 
 //export UploadFile
-func UploadFile(name *C.char, size C.uint64_t, hash unsafe.Pointer, hashLen C.int) C.int {
-	if err := control_fyerwork.UploadFile(C.GoString(name), uint64(size), C.GoBytes(hash, hashLen), viper.GetString("local_serve_address")); err != nil {
+func UploadFile(name *C.char, size C.uint64_t, hash *C.uchar, hashLen C.int) C.int {
+	if err := control_fyerwork.UploadFile(C.GoString(name), uint64(size), C.GoBytes(unsafe.Pointer(hash), hashLen), viper.GetString("local_serve_address")); err != nil {
 		return -1
 	}
 	return 0
@@ -163,7 +166,7 @@ func main() {}
 //---------------------------- Initializing -----------------------------
 
 func init() {
-	viper.Set("port", 4201)
+	viper.Set("port", 4102)
 	viper.Set("max_send_recv_msg_size", 128*1024*1024)
 }
 

@@ -105,13 +105,13 @@ func (p *Peer) Remove() error {
 type PeerEditor struct {
 	peer *Peer
 
-	doc mgoPeer
+	doc bson.M
 	err error
 }
 
 //Edit returns the editing structure and start editing
 func (p *Peer) Edit() *PeerEditor {
-	return &PeerEditor{peer: p}
+	return &PeerEditor{peer: p, doc: bson.M{}}
 }
 
 //Err returns the latest happened error
@@ -125,7 +125,7 @@ func (pe *PeerEditor) SetAddress(address string) *PeerEditor {
 		return pe
 	}
 
-	pe.doc.Address = address
+	pe.doc["address"] = address
 	return pe
 }
 
@@ -134,8 +134,7 @@ func (pe *PeerEditor) Done() error {
 	if err := pe.Err(); err != nil {
 		return err
 	}
-	pe.doc.PeerID = pe.peer.peerID
-	if _, err := peerC().Upsert(bson.M{"peer_id": pe.peer.peerID}, &pe.doc); err != nil {
+	if _, err := peerC().Upsert(&mgoPeer{PeerID: pe.peer.peerID}, bson.M{"$set": pe.doc}); err != nil {
 		return err
 	}
 	return pe.peer.updateState()

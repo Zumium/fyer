@@ -143,13 +143,13 @@ func (fmeta *FileMeta) Remove() error {
 type FileMetaEditor struct {
 	fmeta *FileMeta
 
-	doc mgoFileMeta
+	doc bson.M
 	err error
 }
 
 //Edit returns the editor struct and start editing
 func (fmeta *FileMeta) Edit() *FileMetaEditor {
-	return &FileMetaEditor{fmeta: fmeta}
+	return &FileMetaEditor{fmeta: fmeta, doc: bson.M{}}
 }
 
 //Err returns the happened error
@@ -163,7 +163,8 @@ func (fmeditor *FileMetaEditor) SetSize(size uint64) *FileMetaEditor {
 		return fmeditor
 	}
 
-	fmeditor.doc.Size = size
+	//fmeditor.doc.Size = size
+	fmeditor.doc["size"] = size
 	return fmeditor
 }
 
@@ -173,7 +174,8 @@ func (fmeditor *FileMetaEditor) SetHash(hash []byte) *FileMetaEditor {
 		return fmeditor
 	}
 
-	fmeditor.doc.Hash = hash
+	//fmeditor.doc.Hash = hash
+	fmeditor.doc["hash"] = hash
 	return fmeditor
 }
 
@@ -183,7 +185,8 @@ func (fmeditor *FileMetaEditor) SetFragCount(fragCount uint64) *FileMetaEditor {
 		return fmeditor
 	}
 
-	fmeditor.doc.FragCount = fragCount
+	//fmeditor.doc.FragCount = fragCount
+	fmeditor.doc["frag_count"] = fragCount
 	return fmeditor
 }
 
@@ -193,32 +196,19 @@ func (fmeditor *FileMetaEditor) SetUploadTime(t time.Time) *FileMetaEditor {
 		return fmeditor
 	}
 
-	fmeditor.doc.UploadTime = t
+	//fmeditor.doc.UploadTime = t
+	fmeditor.doc["upload_time"] = t
 	return fmeditor
 }
-
-//SetMerkleTree sets the file merkle tree
-//func (fmeditor *FileMetaEditor) SetMerkleTree(mtree *merkle.MTree) *FileMetaEditor {
-//	if fmeditor.Err() != nil {
-//		return fmeditor
-//	}
-//
-//	b, err := merkle.Marshal(mtree)
-//	if err != nil {
-//		fmeditor.err = err
-//		return fmeditor
-//	}
-//	fmeditor.doc.MerkleTree = b
-//	return fmeditor
-//}
 
 //Done commits the changes to database
 func (fmeditor *FileMetaEditor) Done() error {
 	if err := fmeditor.Err(); err != nil {
 		return err
 	}
-	fmeditor.doc.Name = fmeditor.fmeta.name
-	if _, err := fileMetaC().Upsert(bson.M{"name": fmeditor.fmeta.name}, &fmeditor.doc); err != nil {
+	//fmeditor.doc.Name = fmeditor.fmeta.name
+	//if _, err := fileMetaC().Upsert(bson.M{"name": fmeditor.fmeta.name}, &fmeditor.doc); err != nil {
+	if _, err := fileMetaC().Upsert(&mgoFileMeta{Name: fmeditor.fmeta.name}, bson.M{"$set": fmeditor.doc}); err != nil {
 		return err
 	}
 	return fmeditor.fmeta.updateState()

@@ -102,13 +102,13 @@ func (f *Frag) Remove() error {
 type FragEditor struct {
 	frag *Frag
 
-	doc mgoFrag
+	doc bson.M
 	err error
 }
 
 //Edit returns the editor instance and start editing
 func (f *Frag) Edit() *FragEditor {
-	return &FragEditor{frag: f}
+	return &FragEditor{frag: f, doc: bson.M{}}
 }
 
 //Err returns the latest error that occured
@@ -122,7 +122,7 @@ func (fe *FragEditor) SetPeerList(peerList [][]string) *FragEditor {
 		return fe
 	}
 
-	fe.doc.PeerList = peerList
+	fe.doc["peer_list"] = peerList
 	return fe
 }
 
@@ -132,7 +132,7 @@ func (fe *FragEditor) SetFrags(frags []common.Frag) *FragEditor {
 		return fe
 	}
 
-	fe.doc.Frags = frags
+	fe.doc["frags"] = frags
 	return fe
 }
 
@@ -141,8 +141,7 @@ func (fe *FragEditor) Done() error {
 	if err := fe.Err(); err != nil {
 		return err
 	}
-	fe.doc.Name = fe.frag.name
-	if _, err := fragC().Upsert(bson.M{"name": fe.frag.name}, fe.doc); err != nil {
+	if _, err := fragC().Upsert(&mgoFrag{Name: fe.frag.name}, bson.M{"$set": fe.doc}); err != nil {
 		return err
 	}
 	return fe.frag.updateState()

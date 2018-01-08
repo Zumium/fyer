@@ -32,13 +32,7 @@ func (fr *FileRegisterController) storeToDB(in *pb_center.RegisterRequest) error
 	if err != nil {
 		return err
 	}
-	//mtree, err := merkle.Unmarshal(in.MerkleTree)
-	//if err != nil {
-	//	return err
-	//}
-	editor := dbHandler.Edit()
-	//editor.SetSize(in.Size).SetHash(in.Hash).SetFragCount(in.FragCount).SetMerkleTree(mtree).SetUploadTime(time.Now())
-	return editor.SetSize(in.Size).SetHash(in.Hash).SetUploadTime(time.Now()).Done()
+	return dbHandler.Edit().SetSize(in.GetSize()).SetHash(in.GetHash()).SetUploadTime(time.Now()).Done()
 }
 
 //dispatchFrags makes deploying requests to peers

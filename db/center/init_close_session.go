@@ -6,8 +6,8 @@ import (
 )
 
 var (
-	session *mgo.Session
-	db *mgo.Database
+	session                                            *mgo.Session
+	db                                                 *mgo.Database
 	fileMetaCollection, fragCollection, peerCollection *mgo.Collection
 )
 
@@ -27,7 +27,7 @@ func ensureIndexes() (err error) {
 	if err = fragCollection.EnsureIndexKey("name"); err != nil {
 		return
 	}
-	if err = peerCollection.EnsureIndexKey("peer_id");err!=nil{
+	if err = peerCollection.EnsureIndexKey("peer_id"); err != nil {
 		return
 	}
 	return
