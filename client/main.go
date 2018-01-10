@@ -145,8 +145,8 @@ func FileInfo(name *C.char, finfo *C.file_info) C.int {
 //----------------------------- Upload File -----------------------------
 
 //export UploadFile
-func UploadFile(name *C.char, size C.uint64_t, hash *C.uchar, hashLen C.int) C.int {
-	if err := control_fyerwork.UploadFile(C.GoString(name), uint64(size), C.GoBytes(unsafe.Pointer(hash), hashLen), viper.GetString("local_serve_address")); err != nil {
+func UploadFile(name *C.char, size C.uint64_t, hash *C.uchar, hashLen C.size_t) C.int {
+	if err := control_fyerwork.UploadFile(C.GoString(name), uint64(size), C.GoBytes(unsafe.Pointer(hash), C.int(hashLen)), viper.GetString("local_serve_address")); err != nil {
 		return -1
 	}
 	return 0
