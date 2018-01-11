@@ -6,7 +6,6 @@ import (
 	"github.com/Zumium/fyer/common"
 	"github.com/Zumium/fyer/connectionmngr"
 	db_center "github.com/Zumium/fyer/db/center"
-	//"github.com/Zumium/fyer/merkle"
 	"fmt"
 	pb_center "github.com/Zumium/fyer/protos/center"
 	pb_peer "github.com/Zumium/fyer/protos/peer"
@@ -15,12 +14,6 @@ import (
 	"golang.org/x/net/context"
 	"time"
 )
-
-//FileRegisterStoreFileInfo is used to store file info into database
-//it represents an abstract db operating process
-// type FileRegisterStoreFileInfo interface {
-// 	Store(name string, size uint64, hash []byte, fragCount uint64, mtree *merkle.MTree)
-// }
 
 //FileRegisterController -- file registering process controller
 type FileRegisterController struct{}
